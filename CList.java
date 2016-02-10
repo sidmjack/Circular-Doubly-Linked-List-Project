@@ -35,9 +35,9 @@ class CList<T> implements List<T> {
             this.prev = p;
             this.next = n;
     }
-    /** Head sentinel node. */
+    /** Head node. */
     private Node head;
-    /** Tail sentinel node. */
+    /** Tail node. */
     private Node tail;
     /** Number of actual data nodes in list. */
     private int size;
@@ -49,7 +49,7 @@ class CList<T> implements List<T> {
 
 
     /**
-     * Create an empty list with sentinels.
+     * Create an empty list.
      */
     public CList() {
         this.clear();  // code reuse!
@@ -60,10 +60,9 @@ class CList<T> implements List<T> {
      */
     public void clear() {
         this.size = 0;
-        this.head = new Node(null, null, null);
-        this.tail = new Node(null, this.head, null);
-        this.head.next = this.tail;
-        this.curr = this.head;  // because insert will insert after curr
+        this.head = null;
+        this.tail = null;
+        this.curr = null;  // because insert will insert after curr
     }
 
     /**
@@ -73,11 +72,26 @@ class CList<T> implements List<T> {
      * @return true if successfully inserted, false otherwise
      */
     public boolean insert(T t) {
-        Node n = new Node(t, this.curr, this.curr.next);
-        n.prev.next = n;   // connect left neighbor
-        n.next.prev = n;   // connect right neighbor
-        this.size++;
-        return true;
+        if (this.size == 0) {
+            Node n = new Node(t, null, null);
+            n.prev = n;
+            n.next = n;
+            this.head = n;
+            this.tail = n;
+            this.curr = n;
+            this.size = 1;
+            
+        } else if (this.size == 1) {
+            
+        }
+         else {
+            Node n = new Node(t, this.curr, this.curr.next);
+            n.prev.next = n;   // connect left neighbor
+            n.next.prev = n;   // connect right neighbor
+            this.size++;
+            return true;
+
+        }
     }
 
     /**
