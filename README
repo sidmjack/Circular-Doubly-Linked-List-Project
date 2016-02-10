@@ -1,1 +1,7 @@
 Notes:
+
+
+We won't maintain a tail reference EVER!
+Instead, the tail can ALWAYS be accessed under all cases by:
+	this.head.prev
+
