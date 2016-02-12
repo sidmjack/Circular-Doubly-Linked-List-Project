@@ -5,3 +5,9 @@ We won't maintain a tail reference EVER!
 Instead, the tail can ALWAYS be accessed under all cases by:
 	this.head.prev
 
+
+	append() method is the only way to add a thing to the end of the list.
+
+	add() doesn't work the way we thought. The cursor ends up on the left of the added element, not the right.
+
+	
