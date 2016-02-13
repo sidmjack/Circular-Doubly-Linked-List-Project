@@ -65,7 +65,7 @@ class CList<T> implements List<T> {
     /**
      * Create an empty list.
      */
-    public CList() {
+    CList() {
         this.clear();  // code reuse!
     }
     
@@ -242,7 +242,7 @@ class CList<T> implements List<T> {
 
     /**
      * Return true if current position is at end of the list.
-     * @return true if the current position is the end of the list
+     * @return true if the current position is the end of the list.
      */
     public boolean isAtEnd() {
         
@@ -250,20 +250,20 @@ class CList<T> implements List<T> {
     }
 
     /**
-     * Returns true if list size is zero
-     * @return Returns true if list size is zero
+     * Returns true if list size is zero.
+     * @return Returns true if list size is zero.
      */
     public boolean isEmpty() {
         return this.size == 0;
     }
     /**
-     * Moves curr to next element, ignoring head-tail boundary
+     * Moves curr to next element, ignoring head-tail boundary.
      */
     public void cont() {
         this.curr = this.curr.next;
     }
     /**
-     * Moves curr to back to previous element, ignoring head-tail boundary
+     * Moves curr to back to previous element, ignoring head-tail boundary.
      */
     public void back() {
         this.curr = this.curr.prev;
