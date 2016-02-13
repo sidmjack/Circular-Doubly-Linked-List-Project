@@ -17,11 +17,14 @@ class CList<T> implements List<T> {
      */
     public class Node {
 
-        /** The data in the element. */
+        /** The data in the element.
+         */
         private T data;
-        /** The left neighbor node. */
+        /** The left neighbor node.
+         */
         private Node prev;
-        /** The right neighbor node. */
+        /** The right neighbor node.
+         */
         private Node next;
 
         /**
@@ -34,14 +37,25 @@ class CList<T> implements List<T> {
             this.data = item;
             this.prev = p;
             this.next = n;
+        }
+        /**
+         * Copy constructor for Node's.
+         * @param  n The Node to copy
+         */
+        public Node(Node n) {
+            this.data = n.data;
+            this.prev = n.prev;
+            this.next = n.next;
+        }
     }
-    /** Head node. */
+    /** Head node.
+     */
     private Node head;
-    /** Tail node. */
-    private Node tail;
-    /** Number of actual data nodes in list. */
+    /** Number of actual data nodes in list.
+     */
     private int size;
-    /** Current node (think of as a cursor between nodes). */
+    /** Current node (think of as a cursor between nodes).
+     */
     private Node curr;
 
 
@@ -61,7 +75,6 @@ class CList<T> implements List<T> {
     public void clear() {
         this.size = 0;
         this.head = null;
-        this.tail = null;
         this.curr = null;  // because insert will insert after curr
     }
 
@@ -72,25 +85,24 @@ class CList<T> implements List<T> {
      * @return true if successfully inserted, false otherwise
      */
     public boolean insert(T t) {
-        if (this.size == 0) {
+        if (this.isEmpty()) {
             Node n = new Node(t, null, null);
             n.prev = n;
             n.next = n;
             this.head = n;
-            this.tail = n;
             this.curr = n;
             this.size = 1;
-            
-        } else if (this.size == 1) {
-            
-        }
-         else {
-            Node n = new Node(t, this.curr, this.curr.next);
+
+        } else {
+            boolean resetHead = this.curr == this.head;
+            Node n = new Node(t, this.curr.prev, this.curr);
             n.prev.next = n;   // connect left neighbor
             n.next.prev = n;   // connect right neighbor
             this.size++;
+            if (resetHead) {
+                this.head = n;
+            }
             return true;
-
         }
     }
 
@@ -101,10 +113,15 @@ class CList<T> implements List<T> {
      * @return true if successfully appended, false otherwise
      */
     public boolean append(T t) {
-        Node temp = this.curr;        // hold onto original position
-        this.curr = this.tail.prev;   // move to before the tail sentinel
-        this.insert(t);               // code reuse!
-        this.curr = temp;             // restore cursor to original position
+        if (this.isEmpty()) {
+            this.insert(t);
+        } else {
+            Node n = new Node(t, this.head.prev, this.head);
+            this.head.prev = n;
+            n.prev.next = n;
+            this.size++;
+
+        }
         return true;
     }
 
@@ -113,13 +130,18 @@ class CList<T> implements List<T> {
      * @return the value of the element removed, null if list is empty
      */
     public T remove() {
-        if (this.curr.next == this.tail) {
+        if (this.isEmpty()) { // If the list is empty, return null
             return null;
         }
-        T val = this.curr.next.data;
-        this.curr.next = this.curr.next.next;  // bypass node being deleted
-        this.curr.next.prev = this.curr;       // bypass it in other direction
+        boolean resetHead = this.curr == this.head;
+        T val = this.curr.data;
+        this.curr.prev.next = this.curr.next;  // bypass node being deleted
+        this.curr.next.prev = this.curr.prev;       // bypass it in other direction
         this.size--;
+        this.curr = this.curr.next;
+        if (resetHead) {
+            this.head = this.curr;
+        }
         return val;
     }
 
@@ -128,10 +150,10 @@ class CList<T> implements List<T> {
      * @return the value of the current element, null if none
      */
     public T getValue() {
-        if (this.curr.next == this.tail) {
+        if (this.isEmpty()) {
             return null;
         }
-        return this.curr.next.data;
+        return this.curr.data;
     }
 
     /**
@@ -148,12 +170,14 @@ class CList<T> implements List<T> {
      * Set the current position to the start of the list.
      */
     public void moveToStart() {
+        this.curr = this.head;
     }
 
     /**
      * Set the current position to the end of the list.
      */
     public void moveToEnd() {
+        this.curr = this.head.prev;
     }
 
     /**
@@ -161,12 +185,18 @@ class CList<T> implements List<T> {
      * no change if already at beginning.
      */
     public void prev() {
+        if (this.curr != this.head) {
+            this.curr = this.curr.prev;
+        }
     }
 
     /**
      * Move the current position one step right, no change if already at end.
      */
     public void next() {
+        if (this.curr != this.head.prev) {
+            this.cont();
+        }
     }
 
     /**
@@ -174,8 +204,16 @@ class CList<T> implements List<T> {
      * @return the current position in the list
      */
     public int currPos() {
-        // dummy implementation
-        return 0;
+        if (this.curr == null) {
+            return -1;
+        }
+        Node n = new Node(this.head);
+        int pos = 0;
+        while (n != this.curr) {
+            n.next();
+            pos++;
+        }
+        return pos;
     }
 
     /**
@@ -184,8 +222,22 @@ class CList<T> implements List<T> {
      * @return true if successfully changed position, false otherwise
      */
     public boolean moveToPos(int pos) {
-        // dummy implementation
-        return false;
+        if (pos >= 0 && pos < this.size) { //If position is between 0 and size (0,size]
+            this.curr = this.head; //Reset curr to head before algorithm
+            if (pos <= this.size / 2) {
+                for (int i = 0; pos; ++i) { //Move forward pos times
+                    this.cont();
+                }
+            } else {
+                int revNum = this.size - pos;
+                for (int i = 0; revNum; ++i) { //move back from the head (this.size - pos) times
+                    this.back();
+                }
+            }
+        } else {
+            return false; //if outside acceptable range for a position, return false
+        }
+        return true;
     }
 
     /**
@@ -193,10 +245,28 @@ class CList<T> implements List<T> {
      * @return true if the current position is the end of the list
      */
     public boolean isAtEnd() {
-        // dummy implementation
-        return false;
+        
+        return this.curr == this.head.prev;
     }
 
-
+    /**
+     * Returns true if list size is zero
+     * @return Returns true if list size is zero
+     */
+    public boolean isEmpty() {
+        return this.size == 0;
+    }
+    /**
+     * Moves curr to next element, ignoring head-tail boundary
+     */
+    public void cont() {
+        this.curr = this.curr.next;
+    }
+    /**
+     * Moves curr to back to previous element, ignoring head-tail boundary
+     */
+    public void back() {
+        this.curr = this.curr.prev;
+    }
 
 }
