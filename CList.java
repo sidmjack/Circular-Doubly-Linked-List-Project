@@ -136,7 +136,7 @@ class CList<T> implements List<T> {
         boolean resetHead = this.curr == this.head;
         T val = this.curr.data;
         this.curr.prev.next = this.curr.next;  // bypass node being deleted
-        this.curr.next.prev = this.curr.prev;       // bypass it in other direction
+        this.curr.next.prev = this.curr.prev;  // bypass it in other direction
         this.size--;
         this.curr = this.curr.next;
         if (resetHead) {
@@ -222,20 +222,20 @@ class CList<T> implements List<T> {
      * @return true if successfully changed position, false otherwise
      */
     public boolean moveToPos(int pos) {
-        if (pos >= 0 && pos < this.size) { //If position is between 0 and size (0,size]
+        if (pos >= 0 && pos < this.size) { //If position (0,size]
             this.curr = this.head; //Reset curr to head before algorithm
             if (pos <= this.size / 2) {
                 for (int i = 0; pos; ++i) { //Move forward pos times
                     this.cont();
                 }
             } else {
-                int revNum = this.size - pos;
-                for (int i = 0; revNum; ++i) { //move back from the head (this.size - pos) times
+                int revNum = this.size - pos;  // move back from head
+                for (int i = 0; revNum; ++i) { // (this.size - pos) times
                     this.back();
                 }
             }
         } else {
-            return false; //if outside acceptable range for a position, return false
+            return false; //outside acceptable range for a position
         }
         return true;
     }
