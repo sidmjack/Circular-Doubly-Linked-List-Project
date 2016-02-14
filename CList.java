@@ -206,7 +206,7 @@ class CList<T> implements List<T> {
      */
     public int currPos() {
         if (this.curr == null) {
-            return -1;
+            return 0;
         }
         Node n = new Node(this.head);
         int pos = 0;
