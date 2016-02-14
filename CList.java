@@ -48,6 +48,10 @@ class CList<T> implements List<T> {
             this.next = n.next;
         }
 
+        public String toString() {
+            return data.toString();
+        }
+
     }
     /** Head node.
      */
@@ -268,6 +272,17 @@ class CList<T> implements List<T> {
      */
     public void back() {
         this.curr = this.curr.prev;
+    }
+
+    public String toString() {
+        String s = "[ ";
+        Node n = new Node(this.head);
+        Node tail = n.prev;
+        while (n != tail) {
+            s += n + ", ";
+        }
+        s += this.head.prev + " ]";
+        return s;
     }
 
 }
