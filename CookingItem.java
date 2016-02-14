@@ -10,7 +10,7 @@ public class CookingItem implements CookingItemInterface {
     /**
      * Time Elapsed in Game. 
     */
-    static private int timeElapsped;
+    private static int timeElapsped;
     /**
      * CookingItem Name.
     */
@@ -37,8 +37,12 @@ public class CookingItem implements CookingItemInterface {
     private int overPenalty;
 
     /**
-     * Item Object Constructor.
-    */
+     * Constructor for a CookingItem.
+     * @param  itemName           String name of the item to be cooked
+     * @param  itemCookTime       Amount of time the CookingItem should cook
+     * @param  undercookedPenalty Penalty per min for removing it before done
+     * @param  burnPenalty        Penalty per min for removing it after done
+     */
     public CookingItem(
         String itemName,
         int itemCookTime,
@@ -66,7 +70,7 @@ public class CookingItem implements CookingItemInterface {
      * Prints general item details...
      * Mostly just for testing purposes...
     */
-    public void printItem(){
+    public void printItem() {
         System.out.println("Item Name: " + this.name + "\n");
         System.out.println("Item Cook Time: " + this.timeLeft + "\n");
         System.out.println("Current Penalty: " + this.penalty() + "\n");
@@ -74,7 +78,8 @@ public class CookingItem implements CookingItemInterface {
     }
 
     /**
-     * Returns time remaining for this dish
+     * Returns time remaining for this dish.
+     * @return The amount of time left to cook.
     */
     public int timeRemaining() {
         return this.timeLeft; 
@@ -84,6 +89,7 @@ public class CookingItem implements CookingItemInterface {
      * Returns the penalty if this dish were removed now.
      * Method Checks time remaining for item and imparts 
      * appropriate d.
+     * @return The penalty for removing the CookingItem now
     */
     public int penalty() {
         if (this.cookTime == 0) {
