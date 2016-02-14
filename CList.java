@@ -47,9 +47,12 @@ class CList<T> implements List<T> {
             this.prev = n.prev;
             this.next = n.next;
         }
-
+        /**
+         * Creates a string representation of a Node.
+         * @return String representing Node.
+         */
         public String toString() {
-            return data.toString();
+            return this.data.toString();
         }
 
     }
@@ -273,7 +276,10 @@ class CList<T> implements List<T> {
     public void back() {
         this.curr = this.curr.prev;
     }
-
+    /**
+     * Creates a String representation of a CList object.
+     * @return String representationl of CList
+     */
     public String toString() {
         String s = "[";
         Node n = new Node(this.head);
