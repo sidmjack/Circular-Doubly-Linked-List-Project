@@ -275,14 +275,14 @@ class CList<T> implements List<T> {
     }
 
     public String toString() {
-        String s = "[ ";
+        String s = "[";
         Node n = new Node(this.head);
         Node tail = this.head.prev;
         while (n != tail) {
-            s += n + ", ";
+            s += " " + n;
             n = n.next;
         }
-        s += this.head.prev + " ]";
+        s += " " + this.head.prev + "]";
         return s;
     }
 
