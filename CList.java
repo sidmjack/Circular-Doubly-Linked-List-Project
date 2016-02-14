@@ -103,8 +103,8 @@ class CList<T> implements List<T> {
             if (resetHead) {
                 this.head = n;
             }
-            return true;
         }
+        return true;
     }
 
     /**
