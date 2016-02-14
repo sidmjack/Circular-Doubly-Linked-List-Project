@@ -48,21 +48,6 @@ class CList<T> implements List<T> {
             this.next = n.next;
         }
 
-        public boolean next() {
-            if (this.next == null) {
-                return false;
-            }
-            this = this.next;
-            return true;
-        }
-
-        public boolean prev() {
-            if (this.prev == null) {
-                return false;
-            }
-            this = this.prev;
-            return true;
-        }
     }
     /** Head node.
      */
@@ -226,7 +211,7 @@ class CList<T> implements List<T> {
         Node n = new Node(this.head);
         int pos = 0;
         while (n != this.curr) {
-            n.next();
+            n = n.next;
             pos++;
         }
         return pos;
