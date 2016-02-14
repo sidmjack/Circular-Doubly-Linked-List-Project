@@ -49,18 +49,18 @@ class CList<T> implements List<T> {
         }
 
         public boolean next() {
-            if (n.next == null) {
+            if (this.next == null) {
                 return false;
             }
-            n = n.next;
+            this = this.next;
             return true;
         }
 
         public boolean prev() {
-            if (n.prev == null) {
+            if (this.prev == null) {
                 return false;
             }
-            n = n.prev;
+            this = this.prev;
             return true;
         }
     }
