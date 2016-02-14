@@ -21,18 +21,18 @@ public class Item implements CookingItemInterface{
 	private int last_check;
 	/* Penalty for Undercooked Items
 	*/
-	private int penalty_1;
+	private int underPenalty;
 	/* Penalty for Burnt Items
 	*/
-	private int penalty_2;
+	private int overPenalty;
 
     /* Item Object Constructor
     */
 	Item(item_name, item_cook_time, undercooked_penalty, burn_penalty) {
 		this.name = item_name;
 		this.cook_time = item_cook_time;
-		this.penalty_1 = undercooked_penalty;
-		this.penalty_2 = burn_penalty;
+		this.underPenalty = undercooked_penalty;
+		this.overPenalty = burn_penalty;
 	}
 	
 	/* Updates the food item's fields based on the time-elapsed.
@@ -74,9 +74,9 @@ public class Item implements CookingItemInterface{
 		if (this.cooktime == 0) {
 			return 0;
 		} else if (this.timeRemaining > 0) {
-			return this.penalty_1 * this.cooktime;
+			return this.underPenalty * this.cooktime;
 		} else {
-			return this.penalty_2 * -this.cooktime;
+			return this.overPenalty * -this.cooktime;
 		}
 		
 		return 0; //Just in case...
