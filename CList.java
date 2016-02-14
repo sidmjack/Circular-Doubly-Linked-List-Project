@@ -47,6 +47,22 @@ class CList<T> implements List<T> {
             this.prev = n.prev;
             this.next = n.next;
         }
+
+        public boolean next() {
+            if (n.next == null) {
+                return false;
+            }
+            n = n.next;
+            return true;
+        }
+
+        public boolean prev() {
+            if (n.prev == null) {
+                return false;
+            }
+            n = n.prev;
+            return true;
+        }
     }
     /** Head node.
      */
@@ -225,12 +241,12 @@ class CList<T> implements List<T> {
         if (pos >= 0 && pos < this.size) { //If position (0,size]
             this.curr = this.head; //Reset curr to head before algorithm
             if (pos <= this.size / 2) {
-                for (int i = 0; pos; ++i) { //Move forward pos times
+                for (int i = 0; i < pos; ++i) { //Move forward pos times
                     this.cont();
                 }
             } else {
                 int revNum = this.size - pos;  // move back from head
-                for (int i = 0; revNum; ++i) { // (this.size - pos) times
+                for (int i = 0; i < revNum; ++i) { // (this.size - pos) times
                     this.back();
                 }
             }
