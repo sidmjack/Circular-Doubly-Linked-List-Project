@@ -1,8 +1,15 @@
 /**
- * Names:
+ * Names: Lawrence Wolf-Sonkin & Sidney Jackson
  * Logins: 
  * Course: 600.226.02
  * Project: 1 (Cutthroat Kitchen)
+ *
+ * CookinsStationInterface.java Description:
+ * The interface that simply defines the methods to be included in 
+ * the CookingStation Class.
+ * 
+ * @author Lawrence Wolf-Sonkin & Sidney Jackson
+ * Last Modified: 2/14/2016
  */
 
 public interface CookingStationInterface {
@@ -11,7 +18,7 @@ public interface CookingStationInterface {
     /** Put a new dish at the end of the station.
      *  @param it the dish to add
      */
-    void addItem(CookingItem it);
+    void addItem(CookingItem item);
 
     /** Simulate one minute time passing for this station.
      */

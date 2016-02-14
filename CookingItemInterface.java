@@ -1,17 +1,33 @@
 /**
- * Names:
+ * Names: Lawrence Wolf-Sonkin & Sidney Jackson
  * Logins: 
  * Course: 600.226.02
  * Project: 1 (Cutthroat Kitchen)
+ *
+ * CookinsItemInterface.java Description:
+ * The interface that simply defines the methods to be included in 
+ * the CookingItemClass.
+ * 
+ * @author Lawrence Wolf-Sonkin & Sidney Jackson
+ * Last Modified: 2/14/2016
  */
 
 public interface CookingItemInterface {
-
-	void tick(); // Implements a simulation of one minute of time for this item 
-                 // by decrementing cooking time by one minute
+	/**
+	 * Implements a simulation of one minute of time for this item by decrementing cooking time by one minute
+	 */
+	void tick(); // 
 	
-	int timeRemaining(); // Returns time remaining for this dish
+	/**
+	 * Returns time remaining for the CookingItem.
+	 * @return returns int time remaining.
+	 */
+	int timeRemaining(); 
 	
-	int penalty(); // Returns the penalty if this dish were removed now
+	/**
+	 * Returns the penalty accreud (if any) by removing the dish
+	 * @return returns int penalty
+	 */
+	int penalty(); 
 
 }

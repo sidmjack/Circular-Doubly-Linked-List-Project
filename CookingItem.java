@@ -1,36 +1,46 @@
 /**
- * Names:
+ * Names: Lawrence Wolf-Sonkin & Sidney Jackson
  * Logins: 
  * Course: 600.226.02
  * Project: 1 (Cutthroat Kitchen)
+ *
+ * CookinsItem.java Description:
+ * Object Class for "Cooking Item": Constructs the items, contains the name, cooktime,
+ * and penalties associated with the cooking item, defines the methods
+ * for the CookingStationInterface. Note: There are 3 difference constructors for
+ * Cooking Item to account for 3 different cases an objet may need to be constructed.
+ * 
+ * @author Lawrence Wolf-Sonkin & Sidney Jackson
+ * Last Modified: 2/14/2016
  */
 
-public class CookingItem implements CookingItemInterface{
+public final class CookingItem implements CookingItemInterface {
 
-	/* Cooking_Item Name.
+	/** Cooking_Item Name.
 	*/
 	private String name;	
-	/* Cooking Time.
+	/** Cooking Time.
 	*/
 	private int cook_time;
-	/* time left for item to cook.
+	/** time left for item to cook.
 	*/
 	private int time_left;
-	/* Time Elapsed in Game. 
+	/** Time Elapsed in Game. 
 	*/
-	static private int time_elapsped;
-	/* Last Time Item was Checked.
+	static private int time_elapsed;
+	/** Last Time Item was Checked.
 	*/
 	private int last_check;
-	/* Penalty for Undercooked Items.
+	/** Penalty for Undercooked Items.
 	*/
 	private int underPenalty;
-	/* Penalty for Burnt Items.
+	/** Penalty for Burnt Items.
 	*/
 	private int overPenalty;
 
-    /* Item Object Constructor.
-    */
+    /**
+     *  Cooking Item Object Constructor.
+     */
 	CookingItem(String item_name, int item_cook_time, int undercooked_penalty, int burn_penalty) {
 		this.name = item_name;
 		this.cook_time = item_cook_time;
@@ -38,46 +48,67 @@ public class CookingItem implements CookingItemInterface{
 		this.underPenalty = undercooked_penalty;
 		this.overPenalty = burn_penalty;
 	}
+
+	/**
+	 *  Cooking Item Object Constructor for when passed another item.
+	 */
+	CookingItem(CookingItem item) {
+		this.name = item.name;
+		this.cook_time = item.cook_time;
+		this.time_left = item.time_left;
+		this.underPenalty = item.underPenalty;
+		this.overPenalty = item.overPenalty;
+	}
+
+	/**
+	 *  Cooking Item Object Constructor for when passed NULL... Not sure if this is good practice...
+	 */
+	CookingItem() {
+		this.name = "NON_ITEM";
+		this.cook_time = 0;
+		this.time_left = 0;
+		this.underPenalty = 0;
+		this.overPenalty = 0;
+	}
 	
-	/* Updates the food item's fields based on the time-elapsed.
+	/** Updates the food item's fields based on the time-elapsed.
 	 * Implements a simulation of one minute of time for this item 
      * by decrementing cooking time by one minute.
 	*/
-	void tick() {
-		int difference = (time_elapsed - this.last_time_checked); // Finds difference b/w total time elapsed and item's last check.
+	public void tick() {
+		int difference = (time_elapsed - this.last_check); // Finds difference b/w total time elapsed and item's last check.
     	this.time_left = this.time_left - difference; // Appropriately decrements cooktime...
-		this.last_time_checked = time_elapsed; // Sets last_time checked variables for future reference...
+		this.last_check = time_elapsed; // Sets last_time checked variables for future reference...
 	}
 	
-	/* Prints general item details...
+	/** Prints general item details...
 	   Mostly just for testing purposes...
 	*/
-	void print_item(){
+	public void print_item() {
 		System.out.println("Item Name: " + this.name + "\n");
 		System.out.println("Item Cook Time: " + this.time_left+ "\n");
 		System.out.println("Current Penalty: " + this.penalty() + "\n");
 		System.out.println("Time Remaining: " + this.timeRemaining() + "\n");		
 	}
 
-	/* Returns time remaining for this dish
+	/** Returns time remaining for this dish
 	*/
-	int timeRemaining() {
+	public int timeRemaining() {
 		return this.time_left; 
 	} 
 	
-	/* Returns the penalty if this dish were removed now.
+	/** Returns the penalty if this dish were removed now.
 	   Method Checks time remaining for item and imparts 
 	   appropriate d.
 	*/
-	int penalty() {
+	public int penalty() {
 		if (this.cook_time == 0) {
 			return 0;
-		} else if (this.timeRemaining > 0) {
-			return this.underPenalty * this.cooktime;
+		} else if (this.timeRemaining() > 0) {
+			return this.underPenalty * this.cook_time;
 		} else {
-			return this.overPenalty * -this.cooktime;
+			return this.overPenalty * -this.cook_time;
 		}
-		
-		return 0; //Just in case...
 	}
+	
 }
