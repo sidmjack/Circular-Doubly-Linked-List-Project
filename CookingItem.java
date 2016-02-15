@@ -1,30 +1,31 @@
 /**
  * Names: Lawrence Wolf-Sonkin & Sidney Jackson.
- * Logins: 
+ * Logins:
  * Course: 600.226.02
  * Project: 1 (Cutthroat Kitchen)
  *
  * CookinsItem.java Description:
- * Object Class for "Cooking Item": Constructs the items, contains the name, cooktime,
- * and penalties associated with the cooking item, defines the methods
- * for the CookingStationInterface. Note: There are 3 difference constructors for
- * Cooking Item to account for 3 different cases an objet may need to be constructed.
- * 
+ * Object Class for "Cooking Item": Constructs the items, contains the name,
+ * cooktime,    and penalties associated with the cooking item, defines the
+ * methods for the CookingStationInterface. Note: There are 3 difference
+ * constructors for CookingItem to account for 3 different cases an objet may
+ * need to be constructed.
+ *
  * @author Lawrence Wolf-Sonkin & Sidney Jackson
  * Last Modified: 2/14/2016
  */
 
 public final class CookingItem implements CookingItemInterface {
  
-    /** 
-     * Time Elapsed in Game. 
+    /**
+     * Time Elapsed in Game.
      */
     private static int timeElapsed;
-    /** 
+    /**
      * CookingItem Name.
      */
-    private String name;    
-    /** 
+    private String name;
+    /**
      * Cooking Time.
      */
     private int cookTime;
@@ -36,11 +37,11 @@ public final class CookingItem implements CookingItemInterface {
      * Last Time Item was Checked.
      */
     private int lastCheck;
-    /** 
+    /**
      * Penalty for Undercooked Items.
      */
     private int underPenalty;
-    /** 
+    /**
      * Penalty for Burnt Items.
      */
     private int overPenalty;
@@ -88,7 +89,7 @@ public final class CookingItem implements CookingItemInterface {
     }
     
     /** Updates the food item's fields based on the time-elapsed.
-     *  Implements a simulation of one minute of time for this item 
+     *  Implements a simulation of one minute of time for this item
      *  by decrementing cooking time by one minute.
      */
     public void tick() {
@@ -102,7 +103,7 @@ public final class CookingItem implements CookingItemInterface {
         System.out.println("Item Name: " + this.name + "\n");
         System.out.println("Item Cook Time: " + this.timeLeft + "\n");
         System.out.println("Current Penalty: " + this.penalty() + "\n");
-        System.out.println("Time Remaining: " + this.timeRemaining() + "\n");       
+        System.out.println("Time Remaining: " + this.timeRemaining() + "\n");
     }
 
     /**
@@ -119,12 +120,12 @@ public final class CookingItem implements CookingItemInterface {
     * @return The amount of time left to cook.
     */
     public int timeRemaining() {
-        return this.timeLeft; 
-    } 
+        return this.timeLeft;
+    }
     
-    /** 
+    /**
      * Returns the penalty if this dish were removed now.
-     * Method Checks time remaining for item and imparts 
+     * Method Checks time remaining for item and imparts
      * appropriate d.
      * @return The penalty for removing the CookingItem now
      */
