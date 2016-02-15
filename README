@@ -5,19 +5,13 @@ We won't maintain a tail reference EVER!
 Instead, the tail can ALWAYS be accessed under all cases by:
 	this.head.prev
 
- **********
-    Cut Throat Kitchen Main:
-
-    int cumulative_penalty;
-
-    have a mathod that decrements the kitchen
-
-    //Create while loop that runs through all inputs, adds accodringly, and initiates
-    next while loop (read below)
-
-    //Tick may be contained in a while loop that runs until no items are registered.
-	
-	addStation() given the parameter (just the name of the station), a new item (just a list 
-	named after the station , ie "grill" of items will be added to the KitchenStation list) 
-	(also will be used once at the beginning)
-	
+ Problems (so far) with Main:
+ Relies on private data to function...
+ May need to create getter methods in the classes that contain the values
+ main needs.
+ Made a print function...Currently resets cursors everytime print is used.
+ May need to keep track of current position of elements of each list 
+ tampered with and set them back to their original positions after print 
+ function is used. Hopefully there's an easier way.
+ Other than that, it's hard to tell what else is wrong since it's not
+ up and running yet. 

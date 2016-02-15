@@ -60,11 +60,12 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
 
 		CookingItem temp; //Temporary Cooking Item Object
 		
-		this.station.cont(); //Moves cursor to next food_item in the CookingItem List.
 		temp = new CookingItem(this.tend(REMOVE_THRESHOLD, PENALTY_THRESHOLD));
 		
 		cumulative_penalty+=temp.penalty(); //Adds penalty (if any is accrued).
 		tick_value++; //Increments tick value (minutes passed) by one.
+
+		this.station.cont(); //Moves cursor to next food_item in the CookingItem List.
 	}
 
 	/**

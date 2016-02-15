@@ -76,6 +76,9 @@ public final class CTKMain {
         } 
 
         CTK_Simulation(kitchen);
+        
+        int final_penalty = CookingStation.cumulativePenalty();
+        System.out.println("Final Penalty was: " + final_penalty);
 	 }
 
     /**
@@ -86,12 +89,12 @@ public final class CTKMain {
 	}
 	
 	/**
- 	* [CTK_Simulation description]
- 	* @param kitchen [description]
+ 	* Runs the Cut Throat Kitchen Simulation.
+ 	* @param kitchen THe list of stations in the kitchen
  	*/
 	public static void CTK_Simulation(CList<CookingStation> kitchen) {
 		while (kitchen.length() != 0) {
-			kitchenTick();
+			kitchenTick(); //Runs the tick method for the stations and their items.
 		}
 	}
 
@@ -99,9 +102,14 @@ public final class CTKMain {
 	 * Decrements the cook time for all Cook_Items 
 	 */
 	public static void kitchenTick() {
-		int temp_penalty;
-		kitchen.cont();
-		kitchen.getValue().tick();
+	
+		kitchen.getValue().tick(); //Runs tick operation on next item to be evaluated.
+		
+		if (kitchen.getValue().station.length() == 0) { //Remove station if empty.
+				kitchen.remove();
+		}
+
+		kitchen.cont(); //Moves cursor to next station.
 
 		for (int i = 0; i < kitchen.length(); i++) {
 			for (int j = 0; j < kitchen.getValue().station.length(); j++) {
@@ -110,6 +118,31 @@ public final class CTKMain {
 			}
 			kitchen.cont();
 		}
+	}
 
+	/**
+	 * Prints all of the stations along with the items they contain.
+	 * Needs work. As is will reset cursor everytime print is used.
+	 */
+	public static void printKitchen() {
+		
+		kitchen.moveToStart();
+		System.out.print("[ ");
+		for (int i = 0; i < kitchen.length(); i++) {
+			System.out.print(kitchen.getValue().station_name);
+			System.out.print("[ ");
+			for (int j = 0; j < kitchen.getValue().station.length(); j++) {
+				
+				String item = kitchen.getValue().station.getValue().name;
+				int time_left = kitchen.getValue().station.getValue().cook_time;
+				
+				System.out.println("(" + item + " " + time_left + ")");
+
+				kitchen.getValue().station.cont();
+			}
+			System.out.print(" ]");
+			kitchen.cont();
+		}
+		System.out.print(" ]");
 	}
 }

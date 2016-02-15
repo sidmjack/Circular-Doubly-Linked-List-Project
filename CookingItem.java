@@ -19,7 +19,7 @@ public final class CookingItem implements CookingItemInterface {
  	/** 
  	 * Time Elapsed in Game. 
 	 */
-	private static int time_elapsed;
+	private staticgit int time_elapsed;
 	/** 
 	 * Cooking_Item Name.
 	 */
@@ -92,9 +92,7 @@ public final class CookingItem implements CookingItemInterface {
      *  by decrementing cooking time by one minute.
 	 */
 	public void tick() {
-		int difference = (time_elapsed - this.last_check); // Finds difference b/w total time elapsed and item's last check.
-    	this.time_left = this.time_left - difference; // Appropriately decrements cooktime...
-		this.last_check = time_elapsed; // Sets last_time checked variables for future reference...
+		cook_time--;
 	}
 	
 	/** Prints general item details...
