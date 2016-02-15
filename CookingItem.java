@@ -19,7 +19,7 @@ public final class CookingItem implements CookingItemInterface {
  	/** 
  	 * Time Elapsed in Game. 
 	 */
-	private staticgit int time_elapsed;
+	private static int time_elapsed;
 	/** 
 	 * Cooking_Item Name.
 	 */
