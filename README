@@ -5,9 +5,19 @@ We won't maintain a tail reference EVER!
 Instead, the tail can ALWAYS be accessed under all cases by:
 	this.head.prev
 
+ **********
+    Cut Throat Kitchen Main:
 
-	append() method is the only way to add a thing to the end of the list.
+    int cumulative_penalty;
 
-	add() doesn't work the way we thought. The cursor ends up on the left of the added element, not the right.
+    have a mathod that decrements the kitchen
 
+    //Create while loop that runs through all inputs, adds accodringly, and initiates
+    next while loop (read below)
+
+    //Tick may be contained in a while loop that runs until no items are registered.
+	
+	addStation() given the parameter (just the name of the station), a new item (just a list 
+	named after the station , ie "grill" of items will be added to the KitchenStation list) 
+	(also will be used once at the beginning)
 	

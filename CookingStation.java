@@ -21,7 +21,7 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
 	*/
 	private String station_name;	
 	
-	/** List containing all Kitchen Stations.
+	/** List containing all Station Items.
 	 */
 	private CList<CookingItem> station;
 
@@ -46,7 +46,7 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
     /**
      * Cooking Station Object Constructor.
      */
-	CookingStation(String station_name, CList<CookingItem> station ) {
+	CookingStation(String station_name) {
 		this.station_name = station_name;
 		this.station = null;
 	}
@@ -100,6 +100,14 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
 				return this.station.remove();
 		}
 
+	}
+
+	/**
+	 * Returns the cumulative penalty accrued.
+	 * @return cumulative_penalty  
+	 */
+	public static int cumulativePenalty() {
+		return cumulative_penalty;
 	}
 
 }

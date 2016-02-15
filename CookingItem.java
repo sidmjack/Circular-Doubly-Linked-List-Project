@@ -19,7 +19,7 @@ public final class CookingItem implements CookingItemInterface {
  	/** 
  	 * Time Elapsed in Game. 
 	 */
-	static private int time_elapsed;
+	private static int time_elapsed;
 	/** 
 	 * Cooking_Item Name.
 	 */
@@ -105,6 +105,15 @@ public final class CookingItem implements CookingItemInterface {
 		System.out.println("Item Cook Time: " + this.time_left+ "\n");
 		System.out.println("Current Penalty: " + this.penalty() + "\n");
 		System.out.println("Time Remaining: " + this.timeRemaining() + "\n");		
+	}
+
+	/**
+	 * Prints a string of the cooking item: Contaings Name and time_left.
+	 * @return str 	String of CookingItem
+	 */
+	public String toString(){
+		String str = "(" + this.name + " " + this.time_left + ")";
+        return str;
 	}
 
    /**
