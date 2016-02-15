@@ -140,17 +140,22 @@ class CList<T> implements List<T> {
     public T remove() {
         if (this.isEmpty()) { // If the list is empty, return null
             return null;
+        } else if (this.length() == 1) {
+            T val = this.curr.data;
+            this.clear();
+            return val;
+        } else {
+            boolean resetHead = this.curr == this.head;
+            T val = this.curr.data;
+            this.curr.prev.next = this.curr.next;  // bypass node being deleted
+            this.curr.next.prev = this.curr.prev;  // bypass it in other direction
+            this.size--;
+            this.curr = this.curr.next;
+            if (resetHead) {
+                this.head = this.curr;
+            }
+            return val;
         }
-        boolean resetHead = this.curr == this.head;
-        T val = this.curr.data;
-        this.curr.prev.next = this.curr.next;  // bypass node being deleted
-        this.curr.next.prev = this.curr.prev;  // bypass it in other direction
-        this.size--;
-        this.curr = this.curr.next;
-        if (resetHead) {
-            this.head = this.curr;
-        }
-        return val;
     }
 
     /**
@@ -289,7 +294,8 @@ class CList<T> implements List<T> {
             s += " " + n;
             n = n.next;
         }
-        s += " " + this.head.prev + "]";
+        s += " " + this.head.prev;
+        s += "]";
         return s;
     }
 
