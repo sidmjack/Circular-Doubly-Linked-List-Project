@@ -19,23 +19,23 @@ public final class CookingItem implements CookingItemInterface {
     /** 
      * Time Elapsed in Game. 
      */
-    private static int time_elapsed;
+    private static int timeElapsed;
     /** 
-     * Cooking_Item Name.
+     * CookingItem Name.
      */
     private String name;    
     /** 
      * Cooking Time.
      */
-    private int cook_time;
+    private int cookTime;
     /**
      *  Time left for item to cook.
      */
-    private int time_left;
+    private int timeLeft;
     /**
      * Last Time Item was Checked.
      */
-    private int last_check;
+    private int lastCheck;
     /** 
      * Penalty for Undercooked Items.
      */
@@ -58,8 +58,8 @@ public final class CookingItem implements CookingItemInterface {
         int undercookedPenalty,
         int burnPenalty) {
         this.name = itemName;
-        this.cook_time = itemCookTime;
-        this.time_left = itemCookTime;
+        this.cookTime = itemCookTime;
+        this.timeLeft = itemCookTime;
         this.underPenalty = undercookedPenalty;
         this.overPenalty = burnPenalty;
     }
@@ -70,8 +70,8 @@ public final class CookingItem implements CookingItemInterface {
      */
     CookingItem(CookingItem item) {
         this.name = item.name;
-        this.cook_time = item.cook_time;
-        this.time_left = item.time_left;
+        this.cookTime = item.cookTime;
+        this.timeLeft = item.timeLeft;
         this.underPenalty = item.underPenalty;
         this.overPenalty = item.overPenalty;
     }
@@ -81,8 +81,8 @@ public final class CookingItem implements CookingItemInterface {
      */
     CookingItem() {
         this.name = "NON_ITEM";
-        this.cook_time = 0;
-        this.time_left = 0;
+        this.cookTime = 0;
+        this.timeLeft = 0;
         this.underPenalty = 0;
         this.overPenalty = 0;
     }
@@ -92,25 +92,25 @@ public final class CookingItem implements CookingItemInterface {
      *  by decrementing cooking time by one minute.
      */
     public void tick() {
-        cook_time--;
+        this.cookTime--;
     }
     
     /** Prints general item details...
      * Mostly just for testing purposes...
      */
-    public void print_item() {
+    public void printItem() {
         System.out.println("Item Name: " + this.name + "\n");
-        System.out.println("Item Cook Time: " + this.time_left+ "\n");
+        System.out.println("Item Cook Time: " + this.timeLeft + "\n");
         System.out.println("Current Penalty: " + this.penalty() + "\n");
         System.out.println("Time Remaining: " + this.timeRemaining() + "\n");       
     }
 
     /**
-     * Prints a string of the cooking item: Contaings Name and time_left.
+     * Prints a string of the cooking item: Contaings Name and timeLeft.
      * @return str  String of CookingItem
      */
-    public String toString(){
-        String str = "(" + this.name + " " + this.time_left + ")";
+    public String toString() {
+        String str = "(" + this.name + " " + this.timeLeft + ")";
         return str;
     }
 
@@ -119,7 +119,7 @@ public final class CookingItem implements CookingItemInterface {
     * @return The amount of time left to cook.
     */
     public int timeRemaining() {
-        return this.time_left; 
+        return this.timeLeft; 
     } 
     
     /** 
@@ -129,12 +129,12 @@ public final class CookingItem implements CookingItemInterface {
      * @return The penalty for removing the CookingItem now
      */
     public int penalty() {
-        if (this.cook_time == 0) {
+        if (this.cookTime == 0) {
             return 0;
         } else if (this.timeRemaining() > 0) {
-            return this.underPenalty * this.cook_time;
+            return this.underPenalty * this.cookTime;
         } else {
-            return this.overPenalty * -this.cook_time;
+            return this.overPenalty * -this.cookTime;
         }
     }
     
