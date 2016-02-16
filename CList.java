@@ -199,7 +199,7 @@ class CList<T> implements List<T> {
      */
     public void prev() {
         if (this.curr != this.head) {
-            this.curr = this.curr.prev;
+            this.back();
         }
     }
 
@@ -217,7 +217,7 @@ class CList<T> implements List<T> {
      * @return the current position in the list
      */
     public int currPos() {
-        if (this.curr == null) {
+        if (this.isEmpty()) {
             return 0;
         }
         Node n = new Node(this.head);
@@ -247,10 +247,10 @@ class CList<T> implements List<T> {
                     this.back();
                 }
             }
+            return true;
         } else {
             return false; //outside acceptable range for a position
         }
-        return true;
     }
 
     /**
