@@ -53,9 +53,31 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
 
         // this = null;
     }
-
+    /**
+     *  Put a new dish at the end of the station.
+     *  @param it the dish to add
+     */
     public void addItem(CookingItem item) {
       this.insert(item);
+    }
+
+
+    public String toString() {
+        String s = new String();
+        s += this.stationName + " " + super.toString();
+        return s;
+    }
+
+    public void print() {
+        // grill [ (steak 10) (salmon 5) (chicken 30) ] stove [ (pasta 10) (sauce 5) (ratatoulle 30) ]
+        System.out.print(this);
+    }
+    /**
+     * Returns the name of this CookingStation.
+     * @return Returns the name of this CookingStation
+     */
+    public String getStationName() {
+        return this.stationName;
     }
 
     /** 

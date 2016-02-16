@@ -77,15 +77,23 @@ public final class CookingItem implements CookingItemInterface {
         this.overPenalty = item.overPenalty;
     }
 
+    // /**
+    //  *  Cooking Item Object Constructor for when passed NULL.
+    //  */
+    // CookingItem() {
+    //     this.name = "NON_ITEM";
+    //     this.cookTime = 0;
+    //     this.timeLeft = 0;
+    //     this.underPenalty = 0;
+    //     this.overPenalty = 0;
+    // }
+    
     /**
-     *  Cooking Item Object Constructor for when passed NULL.
+     * Returns the name of this CookingItem.
+     * @return Returns the name of this CookingItem
      */
-    CookingItem() {
-        this.name = "NON_ITEM";
-        this.cookTime = 0;
-        this.timeLeft = 0;
-        this.underPenalty = 0;
-        this.overPenalty = 0;
+    public String getItemName() {
+        return this.name;
     }
     
     /** Updates the food item's fields based on the time-elapsed.
@@ -93,7 +101,7 @@ public final class CookingItem implements CookingItemInterface {
      *  by decrementing cooking time by one minute.
      */
     public void tick() {
-        this.cookTime--;
+        this.timeLeft--;
     }
     
     /** Prints general item details...
@@ -107,12 +115,18 @@ public final class CookingItem implements CookingItemInterface {
     }
 
     /**
+     * Prints a String representation of a CookingItem.
+     */
+    public void print() {
+        System.out.print(this);
+    }
+
+    /**
      * Prints a string of the cooking item: Contaings Name and timeLeft.
      * @return str  String of CookingItem
      */
     public String toString() {
-        String str = "(" + this.name + " " + this.timeLeft + ")";
-        return str;
+        return "(" + this.name + " " + this.timeLeft + ")";
     }
 
    /**
@@ -130,12 +144,12 @@ public final class CookingItem implements CookingItemInterface {
      * @return The penalty for removing the CookingItem now
      */
     public int penalty() {
-        if (this.cookTime == 0) {
+        if (this.timeLeft == 0) {
             return 0;
         } else if (this.timeRemaining() > 0) {
-            return this.underPenalty * this.cookTime;
+            return this.underPenalty * this.timeLeft;
         } else {
-            return this.overPenalty * -this.cookTime;
+            return this.overPenalty * -this.timeLeft;
         }
     }
     

@@ -296,15 +296,14 @@ class CList<T> implements List<T> {
         String s = new String();
         s += "[";
         if (!this.isEmpty()) {
-            Node n = new Node(this.head);
-            Node tail = this.head.prev;
-            while (n != tail) {
+            Node n = new Node(null, null, this.head);
+            n = n.next;
+            for (int i = 0; i < this.length(); ++i) {
                 s += " " + n;
                 n = n.next;
             }
-            s += " " + n + " "; //print the tail
         }
-        s += "]";
+        s += " ]";
         return s;
     }
 
