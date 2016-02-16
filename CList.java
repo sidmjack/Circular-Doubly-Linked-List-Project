@@ -287,7 +287,7 @@ class CList<T> implements List<T> {
      */
     public String toString() {
         String s = new String();
-        s += "{";
+        s += "[";
         if (!this.isEmpty()) {
             Node n = new Node(this.head);
             Node tail = this.head.prev;
@@ -295,9 +295,9 @@ class CList<T> implements List<T> {
                 s += " " + n;
                 n = n.next;
             }
-            s += " " + tail;
+            s += " " + n + " "; //print the tail
         }
-        s += "}";
+        s += "]";
         return s;
     }
 
