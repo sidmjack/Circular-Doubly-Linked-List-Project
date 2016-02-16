@@ -13,7 +13,6 @@
  * Last Modified: 2/14/2016
  */
 
-import java.lang.Math;
 
 public final class CookingStation extends CList<CookingItem> implements CookingStationInterface {
 
@@ -36,20 +35,20 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
     /** Value that sets the ideal "window" to remove CookingItem.
      *  If the item observed is within an appropriate "window" of it's ideal cook time, remove item.
      */
-    private static final int rEMOVETHRESHOLD  = 3;
+    private static final int REMOVETHRESHOLD  = 3;
 
     /** Value that sets the penalty threshold.
      *  If the penalty for an item has accrued a penalty beyond the threshold, remove item.
      */
-    private static final int pENALTYTHRESHOLD = 5;
+    private static final int PENALTYTHRESHOLD = 5;
 
     /**
      * Cooking Station Object Constructor.
      * @param stationName The String name of the CookingStation.
      */
-    CookingStation(String stationName) {
+    CookingStation(String iStationName) {
         super(); //runs CList constructor
-        this.stationName = stationName;
+        this.stationName = iStationName;
 
         // this = null;
     }
@@ -87,38 +86,36 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
      */
     public void tick() {
         
-        CookingItem temp = this.tend(rEMOVETHRESHOLD, pENALTYTHRESHOLD);
+        CookingItem temp = this.tend(REMOVETHRESHOLD, PENALTYTHRESHOLD);
         if (temp != null) {
-          cumulativePenalty += temp.penalty(); //Adds penalty (if any is accrued).
+            cumulativePenalty += temp.penalty(); //Adds penalty (if any is accrued).
         } else {
             this.cont(); //Moves cursor to next foodItem in the CookingItem List.
         }
         
         tickValue++; //Increments tick value (minutes passed) by one.
-
-        
     }
 
     /**
     * Decides whether a CookingItem should removed from a station or not.
-    * @param  rEMOVETHRESHOLD  Determines what range within the idea cooktime
+    * @param  removeThreshold  Determines what range within the idea cooktime
     *                          item shuold be removed.
-    * @param  pENALTYTHRESHOLD Depending on whether cooktime is over/under,
+    * @param  penaltyThreshold Depending on whether cooktime is over/under,
     *                          decides whether to remove the item based on the
     *                          penalty it would accrue...
     * @return                  Returns value of item if removed; Returns "null" otherwise.
     */
-    public CookingItem tend(int rEMOVETHRESHOLD, int pENALTYTHRESHOLD) {
+    public CookingItem tend(int removeThreshold, int penaltyThreshold) {
         
         int timeRemaining = this.getValue().timeRemaining(); //Time Remaining until Item is Cooked.
         int penalty = this.getValue().penalty(); //Penalty that would be gained if item was removed.
 
-        if (timeRemaining < rEMOVETHRESHOLD) {
+        if (timeRemaining < removeThreshold) {
             return this.remove(); //Use this to get penalty later...
         } 
 
         if (timeRemaining > 0) {
-            if (penalty > pENALTYTHRESHOLD) { //If Item is way undercooked, dont touch it!
+            if (penalty > penaltyThreshold) { //If Item is way undercooked, dont touch it!
                 return null;
             } else { //If item is undercooked, but almost done, remove item.
                 return this.remove();
@@ -134,7 +131,7 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
      * @return cumulativePenalty  
      */
     public int cumulativePenalty() {
-        return cumulativePenalty;
+        return this.cumulativePenalty;
     }
 
 }

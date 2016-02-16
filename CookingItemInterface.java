@@ -13,21 +13,22 @@
  */
 
 public interface CookingItemInterface {
-	/**
-	 * Implements a simulation of one minute of time for this item by decrementing cooking time by one minute
-	 */
-	void tick(); // 
-	
-	/**
-	 * Returns time remaining for the CookingItem.
-	 * @return returns int time remaining.
-	 */
-	int timeRemaining(); 
-	
-	/**
-	 * Returns the penalty accreud (if any) by removing the dish
-	 * @return returns int penalty
-	 */
-	int penalty(); 
+    /**
+     * Implements a simulation of one minute of time for this item by
+     * decrementing cooking time by one minute.
+     */
+    void tick();
+    
+    /**
+     * Returns time remaining for the CookingItem.
+     * @return returns int time remaining.
+     */
+    int timeRemaining(); 
+    
+    /**
+     * Returns the penalty accreud (if any) by removing the dish.
+     * @return returns int penalty
+     */
+    int penalty(); 
 
 }

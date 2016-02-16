@@ -19,14 +19,14 @@ public final class CTKMain {
 
 
     /**
-    * Private Constructor for CTK Main
+    * Private Constructor for CTK Main.
     */
     private CTKMain() {
 
     }
      
     /**
-    * Main Function for Cut Throat Kitchen
+    * Main Function for Cut Throat Kitchen.
     * @param args Main's argument (A FILE?)
     */
     public static void main(String[] args) {
@@ -38,6 +38,8 @@ public final class CTKMain {
         }
 
         CLKitchen kitchen = new CLKitchen();
+
+        final int three = 3;
         
         File file = new File(args[0]);
 
@@ -61,7 +63,7 @@ public final class CTKMain {
                     String s = input[0];
                     int a = Integer.parseInt(input[1]);
                     int b = Integer.parseInt(input[2]);
-                    int c = Integer.parseInt(input[3]);
+                    int c = Integer.parseInt(input[three]);
 
                     tempItem = new CookingItem(s, a, b, c); //Create new item.
                     tempStation.addItem(tempItem); //Add new item to station.
@@ -75,10 +77,10 @@ public final class CTKMain {
             e.printStackTrace();
         }
 
-        kitchen.CTK_Simulation();
+        kitchen.ctkSimulation();
 
-        int final_penalty = kitchen.cumulativePenalty();
-        System.out.println("Final Penalty was: " + final_penalty);
+        int finalPenalty = kitchen.cumulativePenalty();
+        System.out.println("Final Penalty was: " + finalPenalty);
     }
 
 

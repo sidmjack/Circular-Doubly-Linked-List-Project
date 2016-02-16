@@ -11,29 +11,21 @@
  * Last Modified: 2/14/2016
  */
 
-import java.io.File;
-import java.util.Scanner;
-import java.io.FileNotFoundException;
-
 class CLKitchen extends CList<CookingStation> {
 
+
     /**
-     * List containing all Kitchen Stations.
+     * Private Constructor for CTK Main
      */
-    // private CList<CookingStation> kitchen;
+    public CLKitchen() {
+       
+    }
+    
 
-     /**
-      * Private Constructor for CTK Main
-      */
-     public CLKitchen() {
-        
-     }
-     
-
-     /**
-      * Adds an item to a station.
-      * @param station CookingStation to be added to the CLKitchen
-      */
+    /**
+     * Adds an item to a station.
+     * @param station CookingStation to be added to the CLKitchen
+     */
     public void addStation(CookingStation station) {
         this.insert(station);
     }
@@ -42,21 +34,21 @@ class CLKitchen extends CList<CookingStation> {
     * Runs the Cut Throat Kitchen Simulation.
     * @param kitchen THe list of stations in the kitchen
     */
-    public void CTK_Simulation() {
+    public void ctkSimulation() {
         while (!this.isEmpty()) {
             this.kitchenTick(); //Runs the tick method for the stations and their items.
         }
     }
 
     /**
-     * Decrements the cook time for all Cook_Items
+     * Decrements the cook time for all Cook_Items.
      */
     public void kitchenTick() {
     
         this.getValue().tick(); //Runs tick operation on next item to be evaluated.
         
         if (this.getValue().length() == 0) { //Remove station if empty.
-                this.remove();
+            this.remove();
         }
 
         this.cont(); //Moves cursor to next station.
@@ -69,7 +61,10 @@ class CLKitchen extends CList<CookingStation> {
             this.cont();
         }
     }
-
+    /**
+     * Cumulative penalty accrued accross all stations.
+     * @return Cumulative penalty
+     */
     public int cumulativePenalty() {
         int c = 0;
         for (int i = 0; i < this.length(); i++) {
