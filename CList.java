@@ -183,14 +183,19 @@ class CList<T> implements List<T> {
      * Set the current position to the start of the list.
      */
     public void moveToStart() {
-        this.curr = this.head;
+        if (!this.isEmpty()) {
+            this.curr = this.head; 
+        }
     }
 
     /**
      * Set the current position to the end of the list.
      */
     public void moveToEnd() {
-        this.curr = this.head.prev;
+        if (!this.isEmpty()) {
+            this.curr = this.head.prev;
+        }
+        
     }
 
     /**
@@ -217,10 +222,10 @@ class CList<T> implements List<T> {
      * @return the current position in the list
      */
     public int currPos() {
-        if (this.isEmpty()) {
+        if (this.isEmpty() || this.length() == 1) {
             return 0;
         }
-        Node n = new Node(this.head);
+        Node n = new Node(null, this.head.prev, this.head.next);
         int pos = 0;
         while (n != this.curr) {
             n = n.next;
@@ -258,7 +263,9 @@ class CList<T> implements List<T> {
      * @return true if the current position is the end of the list.
      */
     public boolean isAtEnd() {
-        
+        if (this.isEmpty()) {
+            return true;
+        }
         return this.curr == this.head.prev;
     }
 
