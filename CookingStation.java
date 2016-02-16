@@ -16,6 +16,17 @@
 
 public final class CookingStation extends CList<CookingItem> implements CookingStationInterface {
 
+    /** Value that sets the ideal "window" to remove CookingItem.
+     *  If the item observed is within an appropriate "window" of it's ideal cook time, remove item.
+     */
+    private static final int REMOVETHRESHOLD  = 3;
+
+    /** Value that sets the penalty threshold.
+     *  If the penalty for an item has accrued a penalty beyond the threshold, remove item.
+     */
+    private static final int PENALTYTHRESHOLD = 5;
+
+
     /** cOOKINGSTATION Name.
     */
     private String stationName;    
@@ -32,19 +43,10 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
      */
     private int cumulativePenalty = 0;
 
-    /** Value that sets the ideal "window" to remove CookingItem.
-     *  If the item observed is within an appropriate "window" of it's ideal cook time, remove item.
-     */
-    private static final int REMOVETHRESHOLD  = 3;
-
-    /** Value that sets the penalty threshold.
-     *  If the penalty for an item has accrued a penalty beyond the threshold, remove item.
-     */
-    private static final int PENALTYTHRESHOLD = 5;
 
     /**
      * Cooking Station Object Constructor.
-     * @param stationName The String name of the CookingStation.
+     * @param iStationName The String name of the CookingStation.
      */
     CookingStation(String iStationName) {
         super(); //runs CList constructor
@@ -57,7 +59,7 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
      *  @param it the dish to add
      */
     public void addItem(CookingItem item) {
-      this.insert(item);
+        this.insert(item);
     }
 
 
@@ -93,7 +95,7 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
             this.cont(); //Moves cursor to next foodItem in the CookingItem List.
         }
         
-        tickValue++; //Increments tick value (minutes passed) by one.
+        this.tickValue++; //Increments tick value (minutes passed) by one.
     }
 
     /**
@@ -121,7 +123,7 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
                 return this.remove();
             }
         } else { //If item is done, just take it take it off!
-                return this.remove();
+            return this.remove();
         }
 
     }
