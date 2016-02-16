@@ -9,9 +9,10 @@ Instead, the tail can ALWAYS be accessed under all cases by:
  Relies on private data to function...
  May need to create getter methods in the classes that contain the values
  main needs.
- Made a print function...Currently resets cursors everytime print is used.
- May need to keep track of current position of elements of each list 
- tampered with and set them back to their original positions after print 
- function is used. Hopefully there's an easier way.
+ Correction!!! Print function seems not to have any of these issues anymore.
+    Made a print function...Currently resets cursors everytime print is used.
+    May need to keep track of current position of elements of each list 
+    tampered with and set them back to their original positions after print 
+    function is used. Hopefully there's an easier way.
  Other than that, it's hard to tell what else is wrong since it's not
  up and running yet. 
