@@ -106,6 +106,7 @@ class CList<T> implements List<T> {
             Node n = new Node(t, this.curr.prev, this.curr);
             n.prev.next = n;   // connect left neighbor
             n.next.prev = n;   // connect right neighbor
+            this.curr = n;
             this.size++;
             if (resetHead) {
                 this.head = n;
