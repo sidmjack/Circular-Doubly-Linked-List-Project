@@ -282,13 +282,17 @@ class CList<T> implements List<T> {
      * Moves curr to next element, ignoring head-tail boundary.
      */
     public void cont() {
-        this.curr = this.curr.next;
+        if (!this.isEmpty()) {
+            this.curr = this.curr.next;
+        }
     }
     /**
      * Moves curr to back to previous element, ignoring head-tail boundary.
      */
     public void back() {
-        this.curr = this.curr.prev;
+        if (!this.isEmpty()) {
+            this.curr = this.curr.prev;
+        }
     }
     /**
      * Creates a String representation of a CList object.
