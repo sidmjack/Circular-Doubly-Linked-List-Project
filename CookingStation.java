@@ -69,9 +69,9 @@ public class CookingStation extends CList<CookingItem>
         super(that);
         final int three = 3;
         final int five = 5;
-        this.stationName = iStationName;
-        this.removeThreshold = three;
-        this.penaltyThreshold = five;
+        this.stationName = that.stationName;
+        this.removeThreshold = that.removeThreshold;
+        this.penaltyThreshold = that.penaltyThreshold;
 
     }
     /**
