@@ -124,9 +124,9 @@ public final class CTKMain {
                     int c = Integer.parseInt(input[three]);
 
                     tempItem = new CookingItem(s, a, b, c); //Create new item.
-                    tempStation.addItem(tempItem); //Add new item to station.
+                    tempStation.append(tempItem); //Add new item to station.
                 }
-                kitchen.insert(tempStation); //Add station to kitchen.
+                kitchen.append(tempStation); //Add station to kitchen.
                 
             } while (sc.hasNextLine());
             
