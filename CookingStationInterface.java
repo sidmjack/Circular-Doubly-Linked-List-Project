@@ -16,9 +16,9 @@ interface CookingStationInterface {
 
 
     /** Put a new dish at the end of the station.
-     *  @param item the dish to add
+     *  @param it the dish to add
      */
-    void addItem(CookingItem item);
+    void addItem(CookingItem it);
 
     /** Simulate one minute time passing for this station.
      */
@@ -32,5 +32,5 @@ interface CookingStationInterface {
      *          used to determine if an item should be removed from the station
      *  @return the item if you decide to remove it, or null otherwise
      */
-    public CookingItem tend(int removeThreshold, int penaltyThreshold);
+    CookingItem tend(int removeThreshold, int penaltyThreshold);
 }

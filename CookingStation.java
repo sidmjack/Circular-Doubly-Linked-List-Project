@@ -15,7 +15,7 @@
 
 
 public class CookingStation extends CList<CookingItem>
-implements CookingStationInterface {
+    implements CookingStationInterface {
 
     /** Value that sets the ideal "window" to remove CookingItem.
      *  If the item observed is within an appropriate "window" of
@@ -62,10 +62,10 @@ implements CookingStationInterface {
     }
     /**
      *  Put a new dish at the end of the station.
-     *  @param item the dish to add
+     *  @param it the dish to add
      */
-    public void addItem(CookingItem item) {
-        this.insert(item);
+    public void addItem(CookingItem it) {
+        this.insert(it);
     }
 
     /**
@@ -88,10 +88,7 @@ implements CookingStationInterface {
         return this.stationName;
     }
 
-    /** 
-      * Tends the current item using a simple algorithm that "decides" whether
-      * or to remove the item from the station or let it remain. 
-      * @return the value of the current element, null if none
+    /** Simulate one minute time passing for this station.
      */
     public void tick() {
         

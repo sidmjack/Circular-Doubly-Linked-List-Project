@@ -4,12 +4,7 @@
  * Course: 600.226.02
  * Project: 1 (Cutthroat Kitchen)
  *
- * CTKMain.java Description:
- * Runs the Cut Throat Kitchen Simulation...
- *
- * @author Lawrence Wolf-Sonkin & Sidney Jackson
- * Last Modified: 2/14/2016
- */
+*/
 
 import java.io.File;
 import java.util.Scanner;
@@ -18,6 +13,13 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * CTKMain.java Description:
+ * Runs the Cut Throat Kitchen Simulation...
+ *
+ * @author Lawrence Wolf-Sonkin & Sidney Jackson
+ * Last Modified: 2/14/2016
+ */
 public final class CTKMain {
 
 
@@ -67,11 +69,13 @@ public final class CTKMain {
 
                 
                 while (!kitchen.isEmpty()) {
-                    writer.write(kitchen + ", " + kitchen.cumulativePenalty() + "\n");
-                    kitchen.kitchenTick(); //Runs the tick method for the stations and their items.
+                    writer.write(kitchen + ", " + kitchen.cumulativePenalty()
+                    + "\n");
+                    kitchen.kitchenTick(); //Runs tick on stations and items.
                 }
 
-                writer.write(kitchen + ", " + kitchen.cumulativePenalty() + "\n");
+                writer.write(kitchen + ", " + kitchen.cumulativePenalty()
+                + "\n");
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -96,7 +100,7 @@ public final class CTKMain {
 
             do {
                 String i = sc.nextLine(); //Assigne next lne in file to a String.
-                String[] input = i.split(" "); //Parse the string into arguments.
+                String[] input = i.split(" "); //Parse the String into arguments
                 
                 tempStation = new CookingStation(input[0]);
 

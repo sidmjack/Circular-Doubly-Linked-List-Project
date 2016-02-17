@@ -149,7 +149,7 @@ class CList<T> implements List<T> {
             boolean resetHead = this.curr == this.head;
             T val = this.curr.data;
             this.curr.prev.next = this.curr.next;  // bypass node being deleted
-            this.curr.next.prev = this.curr.prev;  // bypass it in other direction
+            this.curr.next.prev = this.curr.prev;  // bypass in other direction
             this.size--;
             this.curr = this.curr.next;
             if (resetHead) {
