@@ -70,12 +70,12 @@ public final class CTKMain {
                 
                 while (!kitchen.isEmpty()) {
                     writer.write(kitchen + ", " + kitchen.cumulativePenalty()
-                    + "\n");
+                        + "\n");
                     kitchen.kitchenTick(); //Runs tick on stations and items.
                 }
 
                 writer.write(kitchen + ", " + kitchen.cumulativePenalty()
-                + "\n");
+                    + "\n");
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -87,7 +87,14 @@ public final class CTKMain {
     }
 
 
-    private static void readInFileToKitchen(CLKitchen kitchen, String fileName) {
+    /**
+     * Reads in a File into the given CLKitchen variable.
+     * @param kitchen  CLKitchen object to take in the file.
+     * @param fileName input file
+     */
+    private static void readInFileToKitchen(CLKitchen kitchen,
+        String fileName) {
+
         final int three = 3;
         
         File file = new File(fileName);
@@ -99,8 +106,8 @@ public final class CTKMain {
             Scanner sc = new Scanner(file);
 
             do {
-                String i = sc.nextLine(); //Assigne next lne in file to a String.
-                String[] input = i.split(" "); //Parse the String into arguments
+                String i = sc.nextLine(); //Send next line in file to String.
+                String[] input = i.split(" "); //Parse String into arguments
                 
                 tempStation = new CookingStation(input[0]);
 
