@@ -31,12 +31,15 @@ class CLKitchen extends CList<CookingStation> {
     }
     
     /**
-    * Runs the Cut Throat Kitchen Simulation.
-    * @param kitchen THe list of stations in the kitchen
-    */
-    public void ctkSimulation() {
-        while (!this.isEmpty()) {
-            this.kitchenTick(); //Runs the tick method for the stations and their items.
+     * Iterates through all the CookingStation's in the CLKitchen and modifies
+     * their thresholds.
+     * @param rt Time remove threshold
+     * @param pt Penalty threshold
+     */
+    public void modifyThreshholds(int rt, int pt) {
+        for (int i = 0; i < this.length(); i++) {
+            this.getValue().modifyThreshold(rt, pt);
+            this.cont();
         }
     }
 

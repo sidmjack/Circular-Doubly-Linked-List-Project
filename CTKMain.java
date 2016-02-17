@@ -38,24 +38,13 @@ public final class CTKMain {
 
         if (args.length != 1) {
             System.out.println("Invalid number of arguments given!");
-            CList<Integer> listy = new CList<Integer>();
-            listy.insert(5);
-            listy.insert(4);
-            listy.insert(3);
-            listy.insert(17);
-
-
-            for (int i = 0; i < 7; i++) {
-                System.out.println(listy.currPos());
-                listy.cont();
-            }            
-
             return;
         }
 
         CLKitchen kitchen = new CLKitchen();
 
         final int three = 3;
+        final int four = 4;
         
         File file = new File(args[0]);
 
@@ -70,7 +59,6 @@ public final class CTKMain {
                 String[] input = i.split(" "); //Parse the string into arguments.
                 
                 tempStation = new CookingStation(input[0]);
-                kitchen.insert(tempStation); //Add station to kitchen.
 
                 while (!(sc.nextLine()).trim().isEmpty()) { //Add all items to new station.
 
@@ -84,6 +72,7 @@ public final class CTKMain {
                     tempItem = new CookingItem(s, a, b, c); //Create new item.
                     tempStation.addItem(tempItem); //Add new item to station.
                 }
+                kitchen.insert(tempStation); //Add station to kitchen.
                 
             } while (sc.hasNextLine());
             
@@ -93,9 +82,11 @@ public final class CTKMain {
             e.printStackTrace();
         }
 
-        kitchen.ctkSimulation();
+        // kitchen.ctkSimulation();
 
-        for (int z = 0; z < 4; z++ ) {
+        int pt;
+        int rt;
+        for (int z = 0; z < four; z++ ) {
             try {
                 String fileName = "sim" + z + ".txt";
                 File outfile = new File(fileName);
@@ -103,8 +94,20 @@ public final class CTKMain {
                 FileWriter writer = new FileWriter(outfile);
                 
                 //Kitchen Simulation Here!
+                if (z >= 0 && z <= 2) {
+                    kitchen.modifyThreshholds(0, z);
+                } else if (z == three) {
+                    kitchen.modifyThreshholds(3, 5);
+                }
 
-                writer.write("This is what'll be inside the simulator file!");
+
+                
+                while (!kitchen.isEmpty()) {
+                    writer.write(kitchen.toString());
+                    kitchen.kitchenTick(); //Runs the tick method for the stations and their items.
+                }
+
+                writer.write(kitchen.toString());
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -116,4 +119,9 @@ public final class CTKMain {
     }
 
 
+
+
 }
+
+
+
