@@ -204,7 +204,7 @@ class CList<T> implements List<T> {
      * no change if already at beginning.
      */
     public void prev() {
-        if (this.curr != this.head) {
+        if (!this.isEmpty() && this.curr != this.head) {
             this.back();
         }
     }
@@ -213,7 +213,7 @@ class CList<T> implements List<T> {
      * Move the current position one step right, no change if already at end.
      */
     public void next() {
-        if (this.curr != this.head.prev) {
+        if (!this.isEmpty() && this.curr != this.head.prev) {
             this.cont();
         }
     }
