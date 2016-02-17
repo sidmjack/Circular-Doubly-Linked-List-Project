@@ -243,17 +243,19 @@ class CList<T> implements List<T> {
     public boolean moveToPos(int pos) {
         if (pos >= 0 && pos < this.size) { //If position (0,size]
             this.curr = this.head; //Reset curr to head before algorithm
-            if (pos <= this.size / 2) {
+            if (/*pos <= this.size / 2*/ true) {
                 for (int i = 0; i < pos; ++i) { //Move forward pos times
                     this.cont();
                 }
-            } else {
+            } /*else {
                 int revNum = this.size - pos;  // move back from head
                 for (int i = 0; i < revNum; ++i) { // (this.size - pos) times
                     this.back();
                 }
             }
-            return true;
+*/            return true;
+
+
         } else {
             return false; //outside acceptable range for a position
         }
