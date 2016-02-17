@@ -14,11 +14,13 @@
 class CLKitchen extends CList<CookingStation> {
 
 
+    int storedPenalties;
     /**
      * Constructor for CLKitchen.
      */
     CLKitchen() {
        super();
+       this.storedPenalties = 0;
     }
     
 
@@ -51,7 +53,7 @@ class CLKitchen extends CList<CookingStation> {
         this.getValue().tick(); //Runs tick on next item to be evaluated.
         
         if (this.getValue().length() == 0) { //Remove station if empty.
-            this.remove();
+            this.storedPenalties += this.remove().cumulativePenalty();
         }
 
         this.cont(); //Moves cursor to next station.
