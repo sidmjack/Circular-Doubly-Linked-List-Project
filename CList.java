@@ -226,21 +226,22 @@ class CList<T> implements List<T> {
         if (this.isEmpty() || this.length() == 1) {
             return 0;
         }
-        Node n = new Node(null, this.head.prev, this.head.next);
+        Node temp = this.curr;
+        this.curr = this.head;
         int pos = 0;
-        while (n != this.curr) {
-            n = n.next;
+        while (this.curr != temp) {
+            this.next();
             pos++;
         }
         //stuff from Neha
 
-        Node temp = this.curr;
+        Node tempIIIII = this.curr;
         this.curr = this.head;
         int i;
-        for (i = 0; this.curr != temp; i++) {
+        for (i = 0; this.curr != tempIIIII; i++) {
             this.curr = this.curr.next;
         }
-        this.curr = temp;
+        this.curr = tempIIIII;
         // return i;
 
         assert(i == pos);
