@@ -103,11 +103,11 @@ public final class CTKMain {
 
                 
                 while (!kitchen.isEmpty()) {
-                    writer.write(kitchen.toString() + "\n");
+                    writer.write(kitchen + "\n");
                     kitchen.kitchenTick(); //Runs the tick method for the stations and their items.
                 }
 
-                writer.write(kitchen.toString() + "\n");
+                writer.write(kitchen + "\n");
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
