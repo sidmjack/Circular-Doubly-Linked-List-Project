@@ -110,7 +110,7 @@ public class CookingStation extends CList<CookingItem>
             this.penaltyThreshold);
         if (temp != null) { //Adds a penalty (if any accrued)
             this.cumulativePenalty += temp.penalty();
-            System.out.println("Station: " + this.getStationName() + ", Item: " + temp.getItemName() + ", Penalty: " + temp.penalty());
+            // System.out.println("Station: " + this.getStationName() + ", Item: " + temp.getItemName() + ", Penalty: " + temp.penalty());
         } else {
             this.cont(); //Moves cursor to next CookingItem in the CList.
         }
