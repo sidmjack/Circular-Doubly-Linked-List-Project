@@ -107,8 +107,7 @@ public final class CTKMain {
                     kitchen.kitchenTick(); //Runs the tick method for the stations and their items.
                 }
 
-                writer.write(kitchen + ", 
-                    " + kitchen.cumulativePenalty() + "\n");
+                writer.write(kitchen + ", " + kitchen.cumulativePenalty() + "\n");
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
