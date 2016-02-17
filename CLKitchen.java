@@ -63,9 +63,10 @@ class CLKitchen extends CList<CookingStation> {
         
         if (this.getValue().length() == 0) { //Remove station if empty.
             this.storedPenalties += this.remove().cumulativePenalty();
+        } else {
+            this.cont(); //Moves cursor to next station.
         }
 
-        this.cont(); //Moves cursor to next station.
 
         for (int i = 0; i < this.length(); i++) {
             for (int j = 0; j < this.getValue().length(); j++) {
