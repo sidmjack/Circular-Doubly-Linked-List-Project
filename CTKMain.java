@@ -60,8 +60,8 @@ public final class CTKMain {
                 
                 tempStation = new CookingStation(input[0]);
 
-                while (!(sc.nextLine()).trim().isEmpty()) { //Add all items to new station.
-
+                while (!(i = sc.nextLine()).trim().isEmpty()) { //Add all items to new station.
+                    input = i.split(" ");
                     //Set individual argument names to needed variable.
                     //Maybe turn into a helper method?
                     String s = input[0];
