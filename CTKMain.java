@@ -15,6 +15,10 @@ import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 public final class CTKMain {
 
 
@@ -78,6 +82,22 @@ public final class CTKMain {
         }
 
         kitchen.ctkSimulation();
+
+        for (int z = 0; z < 4; z++ ) {
+            try {
+                String fileName = "sim" + z + ".txt";
+                File outfile = new File(fileName);
+                file.createNewFile();  
+                FileWriter writer = new FileWriter(outfile);
+                
+                //Kitchen Simulation Here!
+
+                writer.write("This is what'll be inside the simulator file!");
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         int finalPenalty = kitchen.cumulativePenalty();
         System.out.println("Final Penalty was: " + finalPenalty);
