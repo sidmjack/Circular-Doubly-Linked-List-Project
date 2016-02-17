@@ -71,7 +71,7 @@ class CLKitchen extends CList<CookingStation> {
      * @return Cumulative penalty
      */
     public int cumulativePenalty() {
-        int c = 0;
+        int c = this.storedPenalties;
         for (int i = 0; i < this.length(); i++) {
             c += this.getValue().cumulativePenalty();
             this.cont();
