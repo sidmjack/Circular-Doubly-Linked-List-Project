@@ -233,21 +233,6 @@ class CList<T> implements List<T> {
             this.next();
             pos++;
         }
-        //stuff from Neha
-
-        Node tempIIIII = this.curr;
-        this.curr = this.head;
-        int i;
-        for (i = 0; this.curr != tempIIIII; i++) {
-            this.curr = this.curr.next;
-        }
-        this.curr = tempIIIII;
-        // return i;
-
-        assert(i == pos);
-
-
-
         return pos;
     }
 
