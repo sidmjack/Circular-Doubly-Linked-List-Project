@@ -15,10 +15,10 @@ class CLKitchen extends CList<CookingStation> {
 
 
     /**
-     * Private Constructor for CTK Main
+     * Constructor for CLKitchen.
      */
-    public CLKitchen() {
-       
+    CLKitchen() {
+       super();
     }
     
 
@@ -48,7 +48,7 @@ class CLKitchen extends CList<CookingStation> {
      */
     public void kitchenTick() {
     
-        this.getValue().tick(); //Runs tick operation on next item to be evaluated.
+        this.getValue().tick(); //Runs tick on next item to be evaluated.
         
         if (this.getValue().length() == 0) { //Remove station if empty.
             this.remove();
@@ -75,12 +75,5 @@ class CLKitchen extends CList<CookingStation> {
             this.cont();
         }
         return c;
-    }
-
-    /**
-     * Prints all of the stations along with the items they contain.
-     */
-    public void print() {
-        System.out.println(this); //depends on toString() function defined in CList.java      
     }
 }

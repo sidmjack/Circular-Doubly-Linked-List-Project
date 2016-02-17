@@ -16,7 +16,6 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;
 
 import java.io.FileWriter;
-import java.io.BufferedWriter;
 import java.io.IOException;
 
 public final class CTKMain {
@@ -43,10 +42,51 @@ public final class CTKMain {
 
         CLKitchen kitchen = new CLKitchen();
 
-        final int three = 3;
         final int four = 4;
+
+        readInFileToKitchen(kitchen, args[0]);
+
+        int pt;
+        int rt;
+        for (int z = 0; z < four; z++) {
+            try {
+                final int three = 3;
+                final int five = 5;
+                String fileName = "sim" + z + ".txt";
+                File outfile = new File(fileName);
+                outfile.createNewFile();  
+                FileWriter writer = new FileWriter(outfile);
+                
+                //Kitchen Simulation Here!
+                if (z >= 0 && z <= 2) {
+                    kitchen.modifyThreshholds(0, z);
+                } else if (z == three) {
+                    kitchen.modifyThreshholds(three, five);
+                }
+
+
+                
+                while (!kitchen.isEmpty()) {
+                    writer.write(kitchen + ", " + kitchen.cumulativePenalty() + "\n");
+                    kitchen.kitchenTick(); //Runs the tick method for the stations and their items.
+                }
+
+                writer.write(kitchen + ", " + kitchen.cumulativePenalty() + "\n");
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        int finalPenalty = kitchen.cumulativePenalty();
+        System.out.println("Final Penalty was: " + finalPenalty);
+    }
+
+
+    private static void readInFileToKitchen(CLKitchen kitchen, String fileName) {
+        final int three = 3;
         
-        File file = new File(args[0]);
+        File file = new File(fileName);
 
         CookingStation tempStation; //Temporary CookingStation Variable
         CookingItem tempItem; //Temporary CookItem Variable
@@ -82,43 +122,7 @@ public final class CTKMain {
             e.printStackTrace();
         }
 
-        // kitchen.ctkSimulation();
-
-        int pt;
-        int rt;
-        for (int z = 0; z < four; z++ ) {
-            try {
-                String fileName = "sim" + z + ".txt";
-                File outfile = new File(fileName);
-                file.createNewFile();  
-                FileWriter writer = new FileWriter(outfile);
-                
-                //Kitchen Simulation Here!
-                if (z >= 0 && z <= 2) {
-                    kitchen.modifyThreshholds(0, z);
-                } else if (z == three) {
-                    kitchen.modifyThreshholds(3, 5);
-                }
-
-
-                
-                while (!kitchen.isEmpty()) {
-                    writer.write(kitchen + ", " + kitchen.cumulativePenalty() + "\n");
-                    kitchen.kitchenTick(); //Runs the tick method for the stations and their items.
-                }
-
-                writer.write(kitchen + ", " + kitchen.cumulativePenalty() + "\n");
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        int finalPenalty = kitchen.cumulativePenalty();
-        System.out.println("Final Penalty was: " + finalPenalty);
     }
-
-
 
 
 }

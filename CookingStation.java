@@ -5,26 +5,30 @@
  * Project: 1 (Cutthroat Kitchen)
  *
  * CookinsStation.java Description:
- * Object Class for "Cooking Station": Constructs the stations, contains the name and 
- * circular list of cooking items belonging to that station, and defines the methods
- * for the CookingStationInterface. Extends CList Class. 
+ * Object Class for "Cooking Station": Constructs the stations, contains the
+ * name and circular list of cooking items belonging to that station, and
+ * defines the methods for the CookingStationInterface. Extends CList Class.
  * 
  * @author Lawrence Wolf-Sonkin & Sidney Jackson
  * Last Modified: 2/14/2016
  */
 
 
-public final class CookingStation extends CList<CookingItem> implements CookingStationInterface {
+public class CookingStation extends CList<CookingItem>
+implements CookingStationInterface {
 
     /** Value that sets the ideal "window" to remove CookingItem.
-     *  If the item observed is within an appropriate "window" of it's ideal cook time, remove item.
+     *  If the item observed is within an appropriate "window" of
+     *  it's ideal cook time, remove item.
      */
-    private int removeThreshold = 3;
+    private int removeThreshold;
 
-    /** Value that sets the penalty threshold.
-     *  If the penalty for an item has accrued a penalty beyond the threshold, remove item.
+    /**
+     *  Value that sets the penalty threshold.
+     *  If the penalty for an item has accrued
+     *  a penalty beyond the threshold, remove item.
      */
-    private int penaltyThreshold = 5;
+    private int penaltyThreshold;
 
 
     /** cOOKINGSTATION Name.
@@ -50,29 +54,32 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
      */
     CookingStation(String iStationName) {
         super(); //runs CList constructor
+        final int three = 3;
+        final int five = 5;
         this.stationName = iStationName;
-
-        // this = null;
+        this.removeThreshold = three;
+        this.penaltyThreshold = five;
     }
     /**
      *  Put a new dish at the end of the station.
-     *  @param it the dish to add
+     *  @param item the dish to add
      */
     public void addItem(CookingItem item) {
         this.insert(item);
     }
 
-
+    /**
+     * Creates a String representation of a CookingStation.
+     * Essentially returns stationName followed by the
+     * CList toString() function
+     * @return String representing CookingStation
+     */
     public String toString() {
         String s = new String();
         s += this.stationName + " " + super.toString();
         return s;
     }
 
-    public void print() {
-        // grill [ (steak 10) (salmon 5) (chicken 30) ] stove [ (pasta 10) (sauce 5) (ratatoulle 30) ]
-        System.out.print(this);
-    }
     /**
      * Returns the name of this CookingStation.
      * @return Returns the name of this CookingStation
@@ -88,11 +95,12 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
      */
     public void tick() {
         
-        CookingItem temp = this.tend(this.removeThreshold, this.penaltyThreshold);
-        if (temp != null) {
-            cumulativePenalty += temp.penalty(); //Adds penalty (if any is accrued).
+        CookingItem temp = this.tend(this.removeThreshold,
+            this.penaltyThreshold);
+        if (temp != null) { //Adds a penalty (if any accrued)
+            this.cumulativePenalty += temp.penalty();
         } else {
-            this.cont(); //Moves cursor to next foodItem in the CookingItem List.
+            this.cont(); //Moves cursor to next CookingItem in the CList.
         }
         
         this.tickValue++; //Increments tick value (minutes passed) by one.
@@ -105,12 +113,13 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
     * @param  pt Depending on whether cooktime is over/under,
     *                          decides whether to remove the item based on the
     *                          penalty it would accrue...
-    * @return                  Returns value of item if removed; Returns "null" otherwise.
+    * @return                  Returns value of item if removed;
+    *                          Returns "null" otherwise.
     */
     public CookingItem tend(int rt, int pt) {
         
-        int timeRemaining = this.getValue().timeRemaining(); //Time Remaining until Item is Cooked.
-        int penalty = this.getValue().penalty(); //Penalty that would be gained if item was removed.
+        int timeRemaining = this.getValue().timeRemaining(); //Time till Cooked
+        int penalty = this.getValue().penalty(); //Penalty if item removed
 
         if (timeRemaining < rt) {
             return this.remove(); //Use this to get penalty later...
@@ -130,7 +139,7 @@ public final class CookingStation extends CList<CookingItem> implements CookingS
 
     /**
      * Returns the cumulative penalty accrued.
-     * @return cumulativePenalty  
+     * @return the cumulativePenalty
      */
     public int cumulativePenalty() {
         return this.cumulativePenalty;

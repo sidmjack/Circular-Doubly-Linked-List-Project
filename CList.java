@@ -312,5 +312,11 @@ class CList<T> implements List<T> {
         s += " ]";
         return s;
     }
+    /**
+     * Prints a human-readable version of CList.
+     */
+    public void print() {
+        System.out.println(this);
+    }
 
 }
