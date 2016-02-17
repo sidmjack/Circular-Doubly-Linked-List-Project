@@ -60,6 +60,20 @@ public class CookingStation extends CList<CookingItem>
         this.removeThreshold = three;
         this.penaltyThreshold = five;
     }
+
+    /**
+     * Copy constructor
+     * @param that CookingStation to copy
+     */
+    CookingStation(CookingStation that) {
+        super(that);
+        final int three = 3;
+        final int five = 5;
+        this.stationName = iStationName;
+        this.removeThreshold = three;
+        this.penaltyThreshold = five;
+
+    }
     /**
      *  Put a new dish at the end of the station.
      *  @param it the dish to add

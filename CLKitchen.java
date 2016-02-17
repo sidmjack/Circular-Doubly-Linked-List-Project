@@ -15,12 +15,21 @@ class CLKitchen extends CList<CookingStation> {
 
 
     int storedPenalties;
+
     /**
-     * Constructor for CLKitchen.
+     * Default constructor for CLKitchen.
      */
     CLKitchen() {
        super();
        this.storedPenalties = 0;
+    }
+
+    /**
+     * Copy constructor for CLKitchen (which is inherited from CList)
+     * @param that The CLKitchen to copy
+     */
+    CLKitchen(CLKitchen that) {
+        super(that);
     }
     
 

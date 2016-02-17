@@ -42,11 +42,7 @@ public final class CTKMain {
             return;
         }
 
-        CLKitchen kitchen = new CLKitchen();
-
-        final int four = 4;
-
-        readInFileToKitchen(kitchen, args[0]);
+                final int four = 4;
 
         int pt;
         int rt;
@@ -54,6 +50,12 @@ public final class CTKMain {
             try {
                 final int three = 3;
                 final int five = 5;
+
+
+                CLKitchen kitchen = new CLKitchen();
+
+                readInFileToKitchen(kitchen, args[0]);
+
                 String fileName = "sim" + z + ".txt";
                 File outfile = new File(fileName);
                 outfile.createNewFile();  
@@ -76,14 +78,15 @@ public final class CTKMain {
 
                 writer.write(kitchen + ", " + kitchen.cumulativePenalty()
                     + "\n");
+                int finalPenalty = kitchen.cumulativePenalty();
+                writer.write("Final Penalty was: " + finalPenalty);
+
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-        int finalPenalty = kitchen.cumulativePenalty();
-        System.out.println("Final Penalty was: " + finalPenalty);
     }
 
 
