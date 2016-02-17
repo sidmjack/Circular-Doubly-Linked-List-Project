@@ -76,6 +76,21 @@ class CList<T> implements List<T> {
     CList() {
         this.clear();  // code reuse!
     }
+
+    /**
+     * Copy constructor for CList.
+     * @param that Other CList to copy.
+     */
+    CList(CList<T> that) {
+        this(); //runs the default constructor
+        Node temp = that.curr; // make a temporary Node recording this.curr
+        that.curr = that.head; //make curr go to the head on "that".
+        for (int i = 0; i < that.length(); ++i) { //for every element in that
+            this.append(that.curr.data); //append ith element of that to this
+            that.next(); // advance Node
+        }
+        that.curr = temp; //set that.curr = to the temp previously made
+    }
     
     /**
      * Remove all contents from the list, so it is once again empty.
