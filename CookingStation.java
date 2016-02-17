@@ -133,17 +133,21 @@ public class CookingStation extends CList<CookingItem>
         int timeRemaining = this.getValue().timeRemaining(); //Time till Cooked
         int penalty = this.getValue().penalty(); //Penalty if item removed
 
-        if (timeRemaining < rt) {
-            return this.remove(); //Use this to get penalty later...
+        if (timeRemaining < rt) { //if time left < threshold
+            return this.remove();
         } 
 
-        if (timeRemaining > 0) {
+        if (pt == 0) {
+            return null;
+        }
+
+        if (timeRemaining > 0) { //if undercooked
             if (penalty > pt) { //If Item is way undercooked, dont touch it!
-                return null;
+                return null; //that is, if penalty > penalty threshold
             } else { //If item is undercooked, but almost done, remove item.
                 return this.remove();
             }
-        } else { //If item is done, just take it take it off!
+        } else { //If overcooked/done, remove!
             return this.remove();
         }
 
