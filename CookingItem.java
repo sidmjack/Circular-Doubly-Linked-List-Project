@@ -144,7 +144,7 @@ public final class CookingItem implements CookingItemInterface {
      * @return The penalty for removing the CookingItem now
      */
     public int penalty() {
-        if (this.timeLeft == 0) {
+        if (this.timeRemaining() == 0) {
             return 0;
         } else if (this.timeRemaining() > 0) {
             return this.underPenalty * this.timeLeft;
