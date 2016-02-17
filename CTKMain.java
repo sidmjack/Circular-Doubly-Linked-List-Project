@@ -38,6 +38,18 @@ public final class CTKMain {
 
         if (args.length != 1) {
             System.out.println("Invalid number of arguments given!");
+            CList<Integer> listy = new CList<Integer>();
+            listy.insert(5);
+            listy.insert(4);
+            listy.insert(3);
+            listy.insert(17);
+
+
+            for (int i = 0; i < 7; i++) {
+                System.out.println(listy.currPos());
+                listy.cont();
+            }            
+
             return;
         }
 
