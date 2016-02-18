@@ -117,7 +117,8 @@ public final class CTKMain {
                 
                 tempStation = new CookingStation(input[0]);
 
-                while (!(i = sc.nextLine()).trim().isEmpty()) { //Add all items to new station.
+                i = sc.nextLine();
+                while (!i.trim().isEmpty()) { //Add all items to new station.
                     input = i.split(" ");
                     //Set individual argument names to needed variable.
                     //Maybe turn into a helper method?
@@ -128,6 +129,7 @@ public final class CTKMain {
 
                     tempItem = new CookingItem(s, a, b, c); //Create new item.
                     tempStation.append(tempItem); //Add new item to station.
+                    i = sc.nextLine();
                 }
                 kitchen.append(tempStation); //Add station to kitchen.
                 
