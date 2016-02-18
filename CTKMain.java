@@ -80,7 +80,7 @@ public final class CTKMain {
                     + "\n");
 
                 int finalPenalty = kitchen.cumulativePenalty();
-                writer.write("Final Penalty was: " + finalPenalty);
+                writer.write("Final Penalty was: " + finalPenalty + "\n");
 
                 writer.close();
             } catch (IOException e) {
