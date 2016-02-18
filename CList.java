@@ -1,4 +1,9 @@
 /**
+ * Names: Lawrence Wolf-Sonkin & Sidney Jackson
+ * Logins: lwolfso1 & sjacks85
+ * Course: 600.226.02
+ * Project: 1 (Cutthroat Kitchen)
+ *
  * Doubly linked circular List implementation of the List interface.
  * Uses an inner Node class.
  *
