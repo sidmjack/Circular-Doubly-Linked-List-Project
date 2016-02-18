@@ -59,6 +59,13 @@ class CLKitchen extends CList<CookingStation> {
      */
     public void kitchenTick() {
 
+        for (int i = 0; i < this.length(); i++) {
+            for (int j = 0; j < this.getValue().length(); j++) {
+                this.getValue().getValue().tick();
+                this.getValue().cont();
+            }
+            this.cont();
+        }
 
     
         this.getValue().tick(); //Runs tick on next item to be evaluated.
@@ -69,13 +76,6 @@ class CLKitchen extends CList<CookingStation> {
             this.cont(); //Moves cursor to next station.
         }
 
-        for (int i = 0; i < this.length(); i++) {
-            for (int j = 0; j < this.getValue().length(); j++) {
-                this.getValue().getValue().tick();
-                this.getValue().cont();
-            }
-            this.cont();
-        }
 
 
 

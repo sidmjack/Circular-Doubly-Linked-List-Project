@@ -69,15 +69,16 @@ public final class CTKMain {
                 }
 
 
-                writer.write(kitchen + ", " + kitchen.cumulativePenalty()
-                    + "\n");
                 while (!kitchen.isEmpty()) {
-     
-                    kitchen.kitchenTick(); //Runs tick on stations and items.
                     writer.write(kitchen + ", " + kitchen.cumulativePenalty()
                         + "\n");
 
+                    kitchen.kitchenTick(); //Runs tick on stations and items.
+
                 }
+
+                writer.write(kitchen + ", " + kitchen.cumulativePenalty()
+                    + "\n");
 
                 int finalPenalty = kitchen.cumulativePenalty();
                 writer.write("Final Penalty was: " + finalPenalty);
