@@ -64,7 +64,7 @@ public final class CTKMain {
                 if (z >= 0 && z <= 2) {
                     kitchen.modifyThreshholds(0, z);
                 } else if (z == three) {
-                    kitchen.modifyThreshholds(three, five);
+                    kitchen.modifyThreshholds(1, 1);
                 }
 
 
