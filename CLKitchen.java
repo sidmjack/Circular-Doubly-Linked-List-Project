@@ -13,19 +13,21 @@
 
 class CLKitchen extends CList<CookingStation> {
 
-
+    /**
+     * Cumulative penalties accrued every time a CookingStation is removed.
+     */
     int storedPenalties;
 
     /**
      * Default constructor for CLKitchen.
      */
     CLKitchen() {
-       super();
-       this.storedPenalties = 0;
+        super();
+        this.storedPenalties = 0;
     }
 
     /**
-     * Copy constructor for CLKitchen (which is inherited from CList)
+     * Copy constructor for CLKitchen (which is inherited from CList).
      * @param that The CLKitchen to copy
      */
     CLKitchen(CLKitchen that) {

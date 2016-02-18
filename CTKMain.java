@@ -3,13 +3,6 @@
  * Logins: lwolfso1 & sjacks85
  * Course: 600.226.02
  * Project: 1 (Cutthroat Kitchen)
- * 
- * CTKMain.java Description:
- * Runs the Cut Throat Kitchen Simulation...
- *
- * @author Lawrence Wolf-Sonkin & Sidney Jackson
- * Last Modified: 2/17/2016
- *
 */
 
 import java.io.File;
@@ -19,6 +12,15 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
+/**
+ * CTKMain.java Description:
+ * Runs the Cut Throat Kitchen Simulation...
+ *
+ * @author Lawrence Wolf-Sonkin & Sidney Jackson
+ * Last Modified: 2/17/2016
+ *
+*/
 public final class CTKMain {
 
 
@@ -41,7 +43,7 @@ public final class CTKMain {
             return;
         }
 
-                final int four = 4;
+        final int four = 4;
 
         int pt;
         int rt;
