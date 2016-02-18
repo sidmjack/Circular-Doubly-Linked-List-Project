@@ -1,6 +1,6 @@
 /**
  * Names: Lawrence Wolf-Sonkin & Sidney Jackson
- * Logins:
+ * Logins: lwolfso1 & sjacks85
  * Course: 600.226.02
  * Project: 1 (Cutthroat Kitchen)
  *
@@ -8,7 +8,7 @@
  * Runs the Cut Throat Kitchen Simulation...
  *
  * @author Lawrence Wolf-Sonkin & Sidney Jackson
- * Last Modified: 2/14/2016
+ * Last Modified: 2/17/2016
  */
 
 class CLKitchen extends CList<CookingStation> {

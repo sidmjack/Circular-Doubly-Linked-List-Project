@@ -1,4 +1,9 @@
 /**
+ * Names: Lawrence Wolf-Sonkin & Sidney Jackson
+ * Logins: lwolfso1 & sjacks85
+ * Course: 600.226.02
+ * Project: 1 (Cutthroat Kitchen)
+ *  
  * Doubly Linked List implementation of the List interface.
  * Uses sentinel nodes at the head & tail, and an inner Node class.
  * This is only a partial implementation, loosely based on OpenDSA version.

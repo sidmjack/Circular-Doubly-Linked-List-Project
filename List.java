@@ -1,4 +1,9 @@
 /**
+ * Names: Lawrence Wolf-Sonkin & Sidney Jackson
+ * Logins: lwolfso1 & sjacks85
+ * Course: 600.226.02
+ * Project: 1 (Cutthroat Kitchen)
+ * 
  * Interface for a List data structure, based on the ADT from OpenDSA.
  * 
  * 2/13: updated to include more specifications relative to positions.
@@ -10,6 +15,7 @@
  *
  * @param <T> the type of the List
  */
+
 public interface List<T> {
 
     /*

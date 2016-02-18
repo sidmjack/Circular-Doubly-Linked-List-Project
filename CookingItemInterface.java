@@ -1,6 +1,6 @@
 /**
  * Names: Lawrence Wolf-Sonkin & Sidney Jackson
- * Logins: 
+ * Logins: lwolfso1 & sjacks85
  * Course: 600.226.02
  * Project: 1 (Cutthroat Kitchen)
  *
