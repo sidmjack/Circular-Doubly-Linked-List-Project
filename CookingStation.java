@@ -168,7 +168,7 @@ public class CookingStation extends CList<CookingItem>
      */
     public void modifyThreshold(int rt, int pt) {
         this.removeThreshold = 1 + rt;
-        this.penaltyThreshold = 1 + pt;
+        this.penaltyThreshold = pt;
     }
 
 }
