@@ -1,10 +1,9 @@
 
 
-// import org.junit.*;
-// import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.BeforeClass;
+import org.junit.Before;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertThat;
@@ -20,10 +19,10 @@ public class ListTest {
 
     private final int sizeOfList = 5;
 
-    private static final int INSERTINT = 2;
+    private static final Integer INSERTINT = 2;
 
     @Before
-    public void setupList() throws InvalidLengthException {
+    public void setupList() {
         this.myListInt = new CList<Integer>();
         this.singleNodeListInt = new CList<Integer>();
         this.testingListInt = new CList<Integer>();
@@ -38,13 +37,7 @@ public class ListTest {
     }
 
     @Test
-    public void newArrayShouldBeEmpty() throws InvalidLengthException {
-        assertTrue("List is not empty", this.emptyListInt.isEmpty());
-    }
-
-    @Test
-    public void newArrayShouldBeSizeZero() throws InvalidLengthException,
-    InvalidIndexException {
+    public void newArrayShouldBeSizeZero() {
         assertEquals("size (" + myListInt.length() + ") is non-zero",
         	0, myListInt.length());
     }
@@ -98,7 +91,7 @@ public class ListTest {
         assertEquals("Length(" + this.emptyListInt.length() +
             ") is not 1 after insert into empty list",1,
             this.emptyListInt.length());
-        assertEquals("Inserted item not returned by getValue",INSERTINT, this.emptyListInt.getValue());
+        assertEquals("Inserted item not returned by getValue()",INSERTINT, this.emptyListInt.getValue());
     }
 
 
@@ -112,9 +105,9 @@ public class ListTest {
         assertEquals("Length(" + this.myListInt.length() +
             ") is not " + (len + 1) + " after insert into full list",len + 1,
             this.myListInt.length());
-        assertEquals("Inserted item not returned by getValue",INSERTINT, this.myListInt.getValue());
-        this.next();
-        Integer newGuy = this.myListInt.getValue;
+        assertEquals("Inserted item not returned by getValue()",INSERTINT, this.myListInt.getValue());
+        this.myListInt.next();
+        Integer newGuy = this.myListInt.getValue();
         assertEquals("Insert did not correctly make curr's next the old curr" , oldGuy, newGuy);
         assertEquals("Position should not change after insert",oldPos, this.myListInt.currPos());
     }
@@ -129,7 +122,7 @@ public class ListTest {
         assertEquals("Length(" + this.emptyListInt.length() +
             ") is not 1 after append into empty list",1,
             this.emptyListInt.length());
-        assertEquals("Appended item not returned by getValue",INSERTINT, this.emptyListInt.getValue());
+        assertEquals("Appended item not returned by getValue()",INSERTINT, this.emptyListInt.getValue());
     }
 
 
@@ -147,8 +140,8 @@ public class ListTest {
         this.myListInt.moveToEnd();
 
         assertEquals("Last item in list not appended item",INSERTINT, this.myListInt.getValue());
-        this.next();
-        Integer newGuy = this.myListInt.getValue;
+        this.myListInt.next();
+        Integer newGuy = this.myListInt.getValue();
         assertEquals("Position should not change after append",oldPos, this.myListInt.currPos());
     }
 
@@ -226,14 +219,14 @@ public class ListTest {
     public void emptyListMoveToStartDoesNotMove() {
         int pos = this.emptyListInt.currPos();
         this.emptyListInt.moveToStart();
-        assertEquals(pos, this.emptyListInt.currPos);
+        assertEquals(pos, this.emptyListInt.currPos());
         assertEquals(0, pos);
     }
 
     @Test
     public void fullListMoveToStart() {
         this.myListInt.moveToStart();
-        assertEquals(0, this.myListInt.currPos);
+        assertEquals(0, this.myListInt.currPos());
     }
 
 
@@ -244,14 +237,14 @@ public class ListTest {
     public void emptyListMoveToEndDoesNotMove() {
         int pos = this.emptyListInt.currPos();
         this.emptyListInt.moveToEnd();
-        assertEquals(pos, this.emptyListInt.currPos);
+        assertEquals(pos, this.emptyListInt.currPos());
         assertEquals(0, pos);
     }
 
     @Test
     public void fullListMoveToEnd() {
         this.myListInt.moveToEnd();
-        assertEquals(this.myListInt.length() - 1, this.myListInt.currPos);
+        assertEquals(this.myListInt.length() - 1, this.myListInt.currPos());
     }
 
     // prev..............
@@ -270,7 +263,7 @@ public class ListTest {
     public void fullListPrev() {
         this.myListInt.moveToEnd();
         for (int i = this.myListInt.length() - 1; i >= 0; --i) {
-            assertEquals("Prev should decrement currPos when not at head", i, this.myListInt.currPos());
+            assertEquals("Prev should decrement currPos() when not at head", i, this.myListInt.currPos());
             this.myListInt.prev();
         }
         assertEquals("Prev should not move if at head", 0, this.myListInt.currPos());
@@ -291,7 +284,7 @@ public class ListTest {
     public void fullListNext() {
         this.myListInt.moveToStart();
         for (int i = 0; i < this.myListInt.length(); ++i) {
-            assertEquals("Next should increment currPos when not at tail", i, this.myListInt.currPos());
+            assertEquals("Next should increment currPos() when not at tail", i, this.myListInt.currPos());
             this.myListInt.next();
         }
         assertEquals("Next should not move if at tail", my.myListInt.length() - 1, this.myListInt.currPos());
