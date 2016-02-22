@@ -197,7 +197,7 @@ public class ListTest {
     public void getValueFromFullList() {
         this.myListInt.moveToStart();
         for (int i = 0; i < this.sizeOfList; ++i) {
-            assertEquals("The " + i + "th element should be " + i, i, this.myListInt.getValue());
+            assertEquals("The " + i + "th element should be " + i, (Integer)i, this.myListInt.getValue());
             this.myListInt.next();
         }
 
@@ -287,7 +287,7 @@ public class ListTest {
             assertEquals("Next should increment currPos() when not at tail", i, this.myListInt.currPos());
             this.myListInt.next();
         }
-        assertEquals("Next should not move if at tail", my.myListInt.length() - 1, this.myListInt.currPos());
+        assertEquals("Next should not move if at tail", myListInt.length() - 1, this.myListInt.currPos());
 
     }
 
