@@ -38,8 +38,8 @@ public class ListTest {
 
     @Test
     public void newArrayShouldBeSizeZero() {
-        assertEquals("size (" + myListInt.length() + ") is non-zero",
-        	0, myListInt.length());
+        assertEquals("size (" + emptyListInt.length() + ") is non-zero",
+        	0, emptyListInt.length());
     }
 
 
@@ -311,6 +311,7 @@ public class ListTest {
     @Test
     public void testMovetoPos() {
         for (int i = 0; i < this.myListInt.length(); ++i) {
+            this.myListInt.moveToPos(i);
             assertEquals("Current position should be the position (" + i + ")", i, this.myListInt.currPos());
         }
         assertFalse("Cannot move to negative position",this.myListInt.moveToPos(-17));
