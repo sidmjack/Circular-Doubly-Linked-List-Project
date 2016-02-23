@@ -197,10 +197,11 @@ public class ListTest {
             ") is not " + (len + 1) + " after append into full list",len + 1,
             this.myListInt.length());
 
+        int backpos = this.myListInt.currPos();
         this.myListInt.moveToEnd();
 
         assertEquals("Last item in list not appended item",INSERTINT, this.myListInt.getValue());
-        assertEquals("Position should not change after append",oldPos, this.myListInt.currPos());    
+        assertEquals("Position should not change after append",oldPos, backpos);    
 // Now with String data instead
         oldPos = this.myListStr.currPos();
 
@@ -210,10 +211,11 @@ public class ListTest {
             ") is not " + (len + 1) + " after append into full list",len + 1,
             this.myListStr.length());
 
+        backpos = this.myListStr.currPos();
         this.myListStr.moveToEnd();
 
         assertEquals("Last item in list not appended item",INSERTINT.toString(), this.myListStr.getValue());
-        assertEquals("Position should not change after append",oldPos, this.myListStr.currPos());
+        assertEquals("Position should not change after append",oldPos, backpos);
     }
 
 
