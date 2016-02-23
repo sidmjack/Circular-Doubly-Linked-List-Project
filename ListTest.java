@@ -147,6 +147,7 @@ public class ListTest {
         this.myListInt.next();
         Integer newGuy = this.myListInt.getValue();
         assertEquals("Insert did not correctly make curr's next the old curr" , oldGuy, newGuy);
+        this.myListInt.prev();
         assertEquals("Position should not change after insert",oldPos, this.myListInt.currPos());    
 // Now with String data instead
         String oldGuyStr = this.myListStr.getValue();
@@ -161,6 +162,7 @@ public class ListTest {
         this.myListStr.next();
         String newGuyStr = this.myListStr.getValue();
         assertEquals("Insert did not correctly make curr's next the old curr" , oldGuyStr, newGuyStr);
+        this.myListInt.prev();
         assertEquals("Position should not change after insert",oldPos, this.myListStr.currPos());
     }
 
@@ -198,7 +200,6 @@ public class ListTest {
         this.myListInt.moveToEnd();
 
         assertEquals("Last item in list not appended item",INSERTINT, this.myListInt.getValue());
-        this.myListInt.next();
         assertEquals("Position should not change after append",oldPos, this.myListInt.currPos());    
 // Now with String data instead
         oldPos = this.myListStr.currPos();
@@ -212,7 +213,6 @@ public class ListTest {
         this.myListStr.moveToEnd();
 
         assertEquals("Last item in list not appended item",INSERTINT.toString(), this.myListStr.getValue());
-        this.myListStr.next();
         assertEquals("Position should not change after append",oldPos, this.myListStr.currPos());
     }
 
