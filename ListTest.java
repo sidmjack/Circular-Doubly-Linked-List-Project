@@ -52,7 +52,7 @@ public class ListTest {
     }
 
     @Test
-    public void newArrayShouldBeSizeZero() {
+    public void newListShouldBeSizeZero() {
         assertEquals("size (" + emptyListInt.length() + ") is non-zero",
         	0, emptyListInt.length());
     // Now with String data instead
