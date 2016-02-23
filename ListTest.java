@@ -1,4 +1,8 @@
-
+/*
+* Lydia Carroll (lcarro12) & Lawrence Wolf-Sonkin (lwolfso1)
+* Data Structures - EN.600.226(01/02)
+* Assignment 1 - Tests for CList.java
+ */
 
 
 import org.junit.Test;
