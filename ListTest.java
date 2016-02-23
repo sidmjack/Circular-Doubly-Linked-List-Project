@@ -144,11 +144,13 @@ public class ListTest {
             ") is not " + (len + 1) + " after insert into full list",len + 1,
             this.myListInt.length());
         assertEquals("Inserted item not returned by getValue()",INSERTINT, this.myListInt.getValue());
+        
+        int backpos = this.myListInt.currPos();
+        
         this.myListInt.next();
         Integer newGuy = this.myListInt.getValue();
         assertEquals("Insert did not correctly make curr's next the old curr" , oldGuy, newGuy);
-        this.myListInt.prev();
-        assertEquals("Position should not change after insert",oldPos, this.myListInt.currPos());    
+        assertEquals("Position should not change after insert",oldPos, backpos);    
 // Now with String data instead
         String oldGuyStr = this.myListStr.getValue();
         oldPos = this.myListStr.currPos();
@@ -159,11 +161,13 @@ public class ListTest {
             ") is not " + (len + 1) + " after insert into full list",len + 1,
             this.myListStr.length());
         assertEquals("Inserted item not returned by getValue()",INSERTINT.toString(), this.myListStr.getValue());
+        
+        backpos = this.myListStr.currPos();
+        
         this.myListStr.next();
         String newGuyStr = this.myListStr.getValue();
         assertEquals("Insert did not correctly make curr's next the old curr" , oldGuyStr, newGuyStr);
-        this.myListInt.prev();
-        assertEquals("Position should not change after insert",oldPos, this.myListStr.currPos());
+        assertEquals("Position should not change after insert",oldPos, backpos);
     }
 
     // Now doing append things
